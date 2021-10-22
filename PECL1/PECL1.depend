@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1634895789 source:c:\workspacecodeblocks\pecl1\main.cpp
+	<iostream>
+
+1634901665 source:c:\workspacecodeblocks\pecl1\src\utilidades.cpp
+	"utilidades.h"
+
+1634901643 c:\workspacecodeblocks\pecl1\include\utilidades.h
+	<cstddef>
+

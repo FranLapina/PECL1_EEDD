@@ -1,6 +1,6 @@
 #ifndef UTILIDADES_H
 #define UTILIDADES_H
-
+#include <cstddef>
 
 class utilidades
 {
@@ -12,11 +12,28 @@ class utilidades
 
     private:
 };
+/*
+    CLASE NODO
+*/
 
+class Nodo
+{
+private:
+    int valor;
+    Nodo *siguiente;
+    friend class Cola;
+    friend class Pila;
+public:
+    Nodo(int v, Nodo *sig = NULL)
+    {
+        valor = v;
+        siguiente = sig;
+    }
+};
+typedef Nodo *pNodo;
 
 /*
     CLASE PILA
-
 */
 
 class Pila
@@ -30,37 +47,19 @@ public:
     int desapilar();
 };
 
-//Destructor de la Pila
-Pila::~Pila()
-{
-    while(cima) desapilar();
-}
-//Meter elemento en la Pila
-void Pila::apilar(int v)
-{
-    pNodo nuevo; //Var aux para manipular el nuevo nodo
-//Se crea un nodo nuevo
-    nuevo = new Nodo(v, cima);
-//El comienzo de la pila es el nuevo nodo
-    cima = nuevo;
-}
-//Sacar elemento de la Pila
-int Pila::desapilar()
-{
-    pNodo nodo; //Var aux para manipular el nodo
-    int v; //Var aux para el retorno del valor del nodo
-    if(!cima) return 0; // Si no hay nodos en la pila se devuelve 0
-// Nodo apunta al primer elemento de la pila
-    nodo = cima;
-//Se asigna a pila toda la pila menos el primer elemento
-    cima= nodo->siguiente;
-//Se guarda el retorno del valor del nodo
-    v = nodo->valor;
-//Se borra el nodo
-    delete nodo;
-    return v;
-}
 
-
+/*
+    CLASE COLAS
+*/
+class Cola
+{
+public:
+    Cola() : frente(NULL), final(NULL) {}
+    ~Cola();
+    void encolar(int v);
+    int desencolar();
+private:
+    pNodo frente, final;
+};
 
 #endif // UTILIDADES_H
