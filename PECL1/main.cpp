@@ -10,9 +10,11 @@ int main()
     for(int i = 0; i <= 11; ++i){
 
         Paquete paquete;
-        cout << paquete.longitud << "||" << paquete.latitud <<endl;
+        cout << "Coordenadas: " << paquete.longitud << " | " << paquete.latitud << " | "
+         << "DNI: "<< paquete.var_NIF << endl;
 
     }
+
 
     //FIN DE ZONA DE PRUEBAS
     return 0;

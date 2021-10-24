@@ -110,6 +110,8 @@ std::string Paquete::modelarLongitud(int longitudNumerica){
 
 
 }
+//Modela la latitud parseandola a string y colocando los numeros de la siguiente forma XXº XX' XX''
+//mediante un bucle que añade espacios y caracteres en posiciones determinadas.
 std::string Paquete::modelarLatitud(int latitudNumerica){
     std::string latitud = std::to_string(latitudNumerica);
     for(int i = 0; i <= 11; ++i){
@@ -122,6 +124,34 @@ std::string Paquete::modelarLatitud(int latitudNumerica){
         }
     }
     return latitud;
+}
 
-
+//PAQUETE::NIF
+//Genera de forma aleatoria numeros del 100 al 99999999
+int Paquete::generarNumerosNIF(){
+        int maximo = Paquete::NIF::NIF_MAX;
+        int minimo = Paquete::NIF::NIF_MIN;
+        int numerosNIF;
+        numerosNIF = (minimo + rand() % (maximo+1 - minimo));
+        return numerosNIF;
+}
+//parsea el numero a string y completa el NIF añadiendole la letra que le corresponderia para los numeros que tiene
+//Y si no llega a 9 digitos (letra incluida) añade 0s a la izquierda hasta completarlo.
+std::string Paquete::NIFCompleto(int numerosNIF){
+    char letras[] = {'T','R','W','A','G','M','Y',
+            'F','P','D','X','B','N','J','Z','S',
+            'Q','V','H','L','C','K','E'};
+    std::string NIFCompleto;
+    char letra;
+    int posicion = numerosNIF%23;
+    NIFCompleto = std::to_string(numerosNIF);
+    NIFCompleto = NIFCompleto+letras[posicion];
+    //Comprobar si el NIF tiene un tamaño de 9 caracteres, si no lo tiene se añaden 0s a la izquierda.
+    if(NIFCompleto.length() < 9){
+        int exceso = 9 - NIFCompleto.length();
+        for(int i = 0; i < exceso; ++i){
+            NIFCompleto = "0"+NIFCompleto;
+        }
+    }
+    return NIFCompleto;
 }

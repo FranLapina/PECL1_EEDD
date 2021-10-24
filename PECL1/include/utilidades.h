@@ -35,9 +35,8 @@ class Paquete
             const static int LAT_MIN  = -3250;
             const static int LON_MAX = 40310;
             const static int LON_MIN = 40280;
-            //int latitud (lat_min + rand() % (lat_max+1 - lat_min));
         };
-
+        //Definicion de metodos referidos a coordenadas:
         int definirLongitud();
         int definirLatitud();
         std::string modelarLongitud(int longitudNumerica);
@@ -45,12 +44,22 @@ class Paquete
         //NIF
         struct NIF
         {
-            char NIF[9];
+            const static int NIF_MAX = 99999999;
+            const static int NIF_MIN = 100;
         };
+        //Definicion de metodos referidos a NIF:
+        std::string NIFCompleto(int numerosNIF);
+        int generarNumerosNIF();
     //Variables de acceso publico:
     public:
-        std::string longitud = modelarLongitud(definirLongitud());
-        std::string latitud = modelarLatitud(definirLatitud());
+        //Coordenadas
+        int longitudNumerica = definirLongitud();
+        int latitudNumerica = definirLatitud();
+        std::string longitud = modelarLongitud(longitudNumerica);
+        std::string latitud = modelarLatitud(latitudNumerica);
+        //NIF:
+        int numerosNIF = generarNumerosNIF();
+        std::string var_NIF = NIFCompleto(numerosNIF);
 
 };
 /*
