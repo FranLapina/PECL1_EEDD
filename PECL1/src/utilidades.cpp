@@ -1,14 +1,10 @@
 #include "utilidades.h"
-
-utilidades::utilidades()
-{
-    //ctor
-}
-
-utilidades::~utilidades()
-{
-    //dtor
-}
+#include <cstdlib>
+#include <string>
+//Constructor
+utilidades::utilidades(){}
+//Destructor
+utilidades::~utilidades(){}
 
 //PILAS
 //Destructor de la Pila
@@ -80,3 +76,52 @@ int Cola::desencolar()
     return v;
 }
 
+//PAQUETE::COORDENADAS
+
+//Randomiza, con un maximo y un minimo, la longitud.
+int Paquete::definirLongitud(){
+    int lon_max = Paquete::Coordenadas::LON_MAX;
+    int lon_min = Paquete::Coordenadas::LON_MIN;
+    int longitud = (lon_min + rand() % (lon_max+1 - lon_min));
+    return longitud;
+}
+
+//Randomiza, con un maximo y un minimo, la latitud.
+int Paquete::definirLatitud(){
+    int lat_max = Paquete::Coordenadas::LAT_MAX;
+    int lat_min = Paquete::Coordenadas::LAT_MIN;
+    int latitud = (lat_min + rand() % (lat_max+1 - lat_min));
+    return latitud;
+}
+//Modela la longitud parseandola a string y colocando los numeros de la siguiente forma XXº XX' XX''
+//mediante un bucle que añade espacios y caracteres en posiciones determinadas.
+std::string Paquete::modelarLongitud(int longitudNumerica){
+    std::string longitud = std::to_string(longitudNumerica);
+    for(int i = 0; i <= 11; ++i){
+        if(i == 3 || i == 7){
+            longitud.insert(i," ");
+        }else if(i == 2){
+            longitud.insert(i,"*"); //al poner el caracter de los grados, sale otra cosa.
+        }else if(i == 6 || i == 9 || i == 10){
+            longitud.insert(i,"'");
+        }
+    }
+    return longitud;
+
+
+}
+std::string Paquete::modelarLatitud(int latitudNumerica){
+    std::string latitud = std::to_string(latitudNumerica);
+    for(int i = 0; i <= 11; ++i){
+        if(i == 3 || i == 7){
+            latitud.insert(i," ");
+        }else if(i == 2){
+            latitud.insert(i,"*"); //al poner el caracter de los grados, sale otra cosa.
+        }else if(i == 6 || i == 9 || i == 10){
+            latitud.insert(i,"'");
+        }
+    }
+    return latitud;
+
+
+}

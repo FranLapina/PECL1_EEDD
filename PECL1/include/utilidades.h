@@ -1,7 +1,8 @@
 #ifndef UTILIDADES_H
 #define UTILIDADES_H
 #include <cstddef>
-
+#include <cstdlib>
+#include <string>
 class utilidades
 {
     public:
@@ -14,26 +15,43 @@ class utilidades
 };
 
 /*
-    CLASE ID
+    CLASE PAQUETE
 */
 
-class id
+class Paquete
 {
-    struct Identificador
-    {
-        char ID[7];
-        string latitud
+    private:
+        //Identificador
+        struct Identificador
+        {
+            char ID[7];
 
-    };
-    struct coordenadas
-    {
-        int lat_max(-3190);
-        int lat_min(-3250);
-        int lon_max(40310);
-        int lon_min(40280);
-        int longitud(lon_min + rand() % (lon_max+1 - lon_min));
-        int latitud (lat_min + rand() % (lat_max+1 - lat_min));
-    };
+        };
+
+        //Coordenadas
+        struct Coordenadas
+        {
+            const static int LAT_MAX = -3190;
+            const static int LAT_MIN  = -3250;
+            const static int LON_MAX = 40310;
+            const static int LON_MIN = 40280;
+            //int latitud (lat_min + rand() % (lat_max+1 - lat_min));
+        };
+
+        int definirLongitud();
+        int definirLatitud();
+        std::string modelarLongitud(int longitudNumerica);
+        std::string modelarLatitud(int latitudNumerica);
+        //NIF
+        struct NIF
+        {
+            char NIF[9];
+        };
+    //Variables de acceso publico:
+    public:
+        std::string longitud = modelarLongitud(definirLongitud());
+        std::string latitud = modelarLatitud(definirLatitud());
+
 };
 /*
     CLASE NODO
