@@ -83,16 +83,16 @@ int Cola::desencolar()
 
 //Randomiza, con un maximo y un minimo, la longitud.
 int Paquete::definirLongitud(){
-    int lon_max = Paquete::Coordenadas::LON_MAX;
-    int lon_min = Paquete::Coordenadas::LON_MIN;
+    int lon_max = Paquete::Coordenadas.LON_MAX;
+    int lon_min = Paquete::Coordenadas.LON_MIN;
     int longitud = (lon_min + rand() % (lon_max+1 - lon_min));
     return longitud;
 }
 
 //Randomiza, con un maximo y un minimo, la latitud.
 int Paquete::definirLatitud(){
-    int lat_max = Paquete::Coordenadas::LAT_MAX;
-    int lat_min = Paquete::Coordenadas::LAT_MIN;
+    int lat_max = Paquete::Coordenadas.LAT_MAX;
+    int lat_min = Paquete::Coordenadas.LAT_MIN;
     int latitud = (lat_min + rand() % (lat_max+1 - lat_min));
     return latitud;
 }
@@ -132,8 +132,8 @@ std::string Paquete::modelarLatitud(int latitudNumerica){
 //PAQUETE::NIF
 //Genera de forma aleatoria numeros del 100 al 99999999
 int Paquete::generarNumerosNIF(){
-        int maximo = Paquete::NIF::NIF_MAX;
-        int minimo = Paquete::NIF::NIF_MIN;
+        int maximo = Paquete::NIF.NIF_MAX;
+        int minimo = Paquete::NIF.NIF_MIN;
         int numerosNIF;
         numerosNIF = (minimo + rand() % (maximo+1 - minimo));
         return numerosNIF;
@@ -158,6 +158,7 @@ std::string Paquete::NIFCompleto(int numerosNIF){
     }
     return NIFCompleto;
 }
+
 
 
 //ID PAQUETE

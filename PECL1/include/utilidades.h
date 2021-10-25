@@ -25,46 +25,68 @@ class utilidades
 class Paquete
 {
     private:
-        //Identificador
-        struct Identificador
+        //--------------------Identificador
+        struct estructuraIdentificador
         {
             char ID[7];
 
         };
 
-        //Coordenadas
-        struct Coordenadas
+        //--------------------Coordenadas
+        struct estructuraCoordenadas
         {
             const static int LAT_MAX = -3190;
             const static int LAT_MIN  = -3250;
             const static int LON_MAX = 40310;
             const static int LON_MIN = 40280;
+            int longitudNumerica;
+            int latitudNumerica;
+            std::string longitud;
+            std::string latitud;
         };
-        //Definicion de metodos referidos a coordenadas:
-        int definirLongitud();
-        int definirLatitud();
-        std::string modelarLongitud(int longitudNumerica);
-        std::string modelarLatitud(int latitudNumerica);
-        //NIF
-        struct NIF
+
+        //------------NIF
+        struct estructuraNIF
         {
             const static int NIF_MAX = 99999999;
             const static int NIF_MIN = 100;
+            int numerosNIF;
+            std::string NIFCompleto;
         };
-        //Definicion de metodos referidos a NIF:
+        //---------Definicion de metodos referidos a coordenadas------------
+
+        std::string modelarLongitud(int longitudNumerica);
+        std::string modelarLatitud(int latitudNumerica);
+        //-----------Definicion de metodos referidos a NIF-------------------
         std::string NIFCompleto(int numerosNIF);
-        int generarNumerosNIF();
-    //Variables de acceso publico:
     public:
-        //Coordenadas
-        int longitudNumerica = definirLongitud();
-        int latitudNumerica = definirLatitud();
-        std::string longitud = modelarLongitud(longitudNumerica);
-        std::string latitud = modelarLatitud(latitudNumerica);
-        //NIF:
-        int numerosNIF = generarNumerosNIF();
-        std::string var_NIF = NIFCompleto(numerosNIF);
-        //ID:
+        int definirLongitud();
+        int definirLatitud();
+        int generarNumerosNIF();
+
+        //----------Definicion de estructuras--------------------
+        estructuraNIF NIF;
+        estructuraCoordenadas Coordenadas;
+        estructuraIdentificador Identificador;
+
+
+
+        //-------------------------ID:
+
+        //Inicializador:
+        Paquete(int longitudNumerica, int latitudNumerica,int numerosNIF)
+        {
+            //--------------------Coordenadas
+            Coordenadas.longitudNumerica = longitudNumerica;
+            Coordenadas.latitudNumerica = latitudNumerica;
+            Coordenadas.longitud = modelarLongitud(longitudNumerica);
+            Coordenadas.latitud = modelarLatitud(latitudNumerica);
+            //-----------------------NIF:
+            NIF.numerosNIF = numerosNIF;
+            NIF.NIFCompleto = NIFCompleto(numerosNIF);
+
+        }
+
 
 
 };

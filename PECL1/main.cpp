@@ -8,21 +8,24 @@ int main()
 
     //ZONA DE PRUEBAS
     utilidades utilidades;
-    utilidades.menu_principal();
+    //utilidades.menu_principal();
     for(int i = 0; i <= 11; ++i)
     {
 
-        Paquete paquete;
-        cout << "Coordenadas: " << paquete.longitud << " | " << paquete.latitud << " | "
-             << "DNI: "<< paquete.var_NIF << endl;
+        Paquete paquete(paquete.definirLongitud(),paquete.definirLatitud(),paquete.generarNumerosNIF());
+        string longitud = paquete.Coordenadas.longitud;
+        string latitud = paquete.Coordenadas.latitud;
+        string NIF = paquete.NIF.NIFCompleto;
+        cout << "Coordenadas: " << longitud << " | " << latitud << " | "
+             << "DNI: "<< NIF << endl;
 
     }
-
+    /*
     utilidades.menu_carga();
     cout << "pito" << endl;
 
     utilidades.menu_entregados();
-
+    */
     //FIN DE ZONA DE PRUEBAS
     return 0;
 }
