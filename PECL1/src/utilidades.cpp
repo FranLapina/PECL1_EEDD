@@ -1,6 +1,9 @@
 #include "utilidades.h"
 #include <cstdlib>
 #include <string>
+#include <iostream>
+#include <iomanip>
+using namespace std;
 //Constructor
 utilidades::utilidades(){}
 //Destructor
@@ -154,4 +157,24 @@ std::string Paquete::NIFCompleto(int numerosNIF){
         }
     }
     return NIFCompleto;
+}
+
+
+//ID PAQUETE
+
+
+
+//MENUS
+
+
+void utilidades::menu_principal(){
+    cout << "-------------------------------------------------------------------" << endl;
+    cout  << "|" << setw (40) << "Cola Paqueteria" << setw (26) << "|" << endl;
+    cout << "-------------------------------------------------------------------" << endl;
+    cout << "|" << setw (14) << "Identificador" << setw (4) << "|" << setw (13) << "Coordenadas" << setw (4) << "|" << setw (9) << "NIF" << setw (7) << "|" << setw(11) << "Zona de" << setw (4) << "|" << endl;
+    cout << "|" << setw (11) << "Paquete" << setw (7) << "|" << setw (10) << "Envio" << setw (7) << "|" << setw(14) << "Destinatario" << setw (2) << "|" << setw(10) << "Envio" << setw (5) << "|"<< endl;
+    cout << "-------------------------------------------------------------------" << endl;
+}
+
+void utilidades::menu_envio(){
 }

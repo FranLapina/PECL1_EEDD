@@ -22,3 +22,19 @@
 	<iostream>
 	<utilidades.h>
 
+1635155174 source:c:\users\luisi\desktop\pecl1_eedd\pecl1_eedd-main\pecl1\src\utilidades.cpp
+	"utilidades.h"
+	<cstdlib>
+	<string>
+	<iostream>
+	<iomanip>
+
+1635155302 c:\users\luisi\desktop\pecl1_eedd\pecl1_eedd-main\pecl1\include\utilidades.h
+	<cstddef>
+	<cstdlib>
+	<string>
+
+1635154972 source:c:\users\luisi\desktop\pecl1_eedd\pecl1_eedd-main\pecl1\main.cpp
+	<iostream>
+	<utilidades.h>
+

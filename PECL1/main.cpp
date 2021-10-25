@@ -7,13 +7,19 @@ int main()
 {
 
     //ZONA DE PRUEBAS
-    for(int i = 0; i <= 11; ++i){
+    utilidades utilidades;
+    utilidades.menu_principal();
+    for(int i = 0; i <= 11; ++i)
+    {
 
         Paquete paquete;
         cout << "Coordenadas: " << paquete.longitud << " | " << paquete.latitud << " | "
-         << "DNI: "<< paquete.var_NIF << endl;
+             << "DNI: "<< paquete.var_NIF << endl;
+
+
 
     }
+
 
 
     //FIN DE ZONA DE PRUEBAS

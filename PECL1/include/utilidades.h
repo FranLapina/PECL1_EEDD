@@ -8,6 +8,8 @@ class utilidades
     public:
         utilidades();
         virtual ~utilidades();
+        void menu_principal();
+        void menu_envio();
 
     protected:
 
@@ -60,6 +62,8 @@ class Paquete
         //NIF:
         int numerosNIF = generarNumerosNIF();
         std::string var_NIF = NIFCompleto(numerosNIF);
+        //ID:
+
 
 };
 /*
