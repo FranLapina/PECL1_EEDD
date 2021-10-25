@@ -16,11 +16,12 @@ int main()
         cout << "Coordenadas: " << paquete.longitud << " | " << paquete.latitud << " | "
              << "DNI: "<< paquete.var_NIF << endl;
 
-
-
     }
 
+    utilidades.menu_carga();
+    cout << "pito" << endl;
 
+    utilidades.menu_entregados();
 
     //FIN DE ZONA DE PRUEBAS
     return 0;

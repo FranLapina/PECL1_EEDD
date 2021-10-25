@@ -9,7 +9,9 @@ class utilidades
         utilidades();
         virtual ~utilidades();
         void menu_principal();
+        void menu_carga();
         void menu_envio();
+        void menu_entregados();
 
     protected:
 
