@@ -20,12 +20,15 @@ int main()
              << "DNI: "<< NIF << endl;
 
     }
-    /*
+    utilidades.menu_principal();
+    cout<< "pito"<< endl;
+    utilidades.menu_envio();
+    cout << "pito" << endl;
     utilidades.menu_carga();
     cout << "pito" << endl;
 
     utilidades.menu_entregados();
-    */
+
     //FIN DE ZONA DE PRUEBAS
     return 0;
 }
