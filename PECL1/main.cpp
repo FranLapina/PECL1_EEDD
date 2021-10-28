@@ -6,6 +6,21 @@ using namespace std;
 int main()
 {
 
+    //Codigo que crea una pila y lo pasa a una cola.
+    Pila pila;
+    Cola cola;
+    int i = 0, k = 0;
+    int MAX = 10;
+    for (i=1;i<MAX;i++){
+        pila.apilar(10*i);
+        //cout << "Apilando: " << 10*i << " " << endl;
+    }
+    for (i = 1; i < MAX; i++){
+        k = pila.desapilar();
+        cola.encolar(k);
+        //cout << "Encolando: " << k << endl;
+    }
+
     //ZONA DE PRUEBAS
     utilidades utilidades;
     //utilidades.menu_principal();
