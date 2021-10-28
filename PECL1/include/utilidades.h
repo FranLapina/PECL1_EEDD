@@ -59,22 +59,24 @@ class Paquete
         std::string modelarLatitud(int latitudNumerica);
         //-----------Definicion de metodos referidos a NIF-------------------
         std::string NIFCompleto(int numerosNIF);
+        //-----------Definicion de metodos referidos a Identificador-------------------
+        std::string modelarID();
+        //-----------Definicion de metodos referidos a zona-------------------
+        std::string asignarZona();
     public:
+        //metodos:
         int definirLongitud();
         int definirLatitud();
         int generarNumerosNIF();
         int generarNumerosID();
-        std::string modelarID();
+
+        //Variables:
+        std::string zona;
 
         //----------Definicion de estructuras--------------------
         estructuraNIF NIF;
         estructuraCoordenadas Coordenadas;
         estructuraIdentificador Identificador;
-
-
-
-        //-------------------------ID:
-
         //Inicializador:
         Paquete()
         {
@@ -88,6 +90,8 @@ class Paquete
             //------------------------ID:
             Identificador.numerosID = generarNumerosID();
             Identificador.ID = modelarID();
+            //------------------------Zona:
+            zona = asignarZona();
 
         }
 

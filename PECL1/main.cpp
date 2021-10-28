@@ -9,7 +9,7 @@ int main()
     //ZONA DE PRUEBAS
     utilidades utilidades;
     //utilidades.menu_principal();
-    for(int i = 0; i <= 11; ++i)
+    for(int i = 0; i <= 20; ++i)
     {
 
         Paquete paquete;
@@ -17,8 +17,9 @@ int main()
         string latitud = paquete.Coordenadas.latitud;
         string NIF = paquete.NIF.NIFCompleto;
         string ID = paquete.Identificador.ID;
+        string zona = paquete.zona;
         cout << "Coordenadas: " << longitud << " | " << latitud << " | "
-             << "DNI: "<< NIF << " | " << "Identificador: "<< ID <<endl;
+             << "DNI: "<< NIF << " | " << "Identificador: "<< ID << " | " << " Zona: " << zona <<endl;
 
     }
     utilidades.menu_principal();

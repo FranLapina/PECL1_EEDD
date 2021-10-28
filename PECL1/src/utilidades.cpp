@@ -188,6 +188,27 @@ std::string Paquete::modelarID(){
     return numerosID;
 }
 
+//ZONA
+
+std::string Paquete::asignarZona(){
+    int latitud = Coordenadas.latitudNumerica;
+    int longitud = Coordenadas.longitudNumerica;
+    if(longitud >= 40295 && latitud >= -3220){
+        //NORESTE
+        return "NE";
+    }else if(longitud > 40295 && latitud < -3220){
+        //NOROESTE
+        return "NO";
+    }else if(longitud <= 40295 && latitud <= -3220){
+        //SURESTE
+        return "SO";
+    }else if(longitud < 40295 && latitud > -3220){
+        //SUROESTE
+        return "SE";
+    }
+    return "ERROR";
+}
+
 //MENUS
 
 
