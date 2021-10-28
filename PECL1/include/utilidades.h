@@ -28,8 +28,8 @@ class Paquete
         //--------------------Identificador
         struct estructuraIdentificador
         {
-            char ID[7];
-
+            std::string ID;
+            int numerosID;
         };
 
         //--------------------Coordenadas
@@ -63,6 +63,8 @@ class Paquete
         int definirLongitud();
         int definirLatitud();
         int generarNumerosNIF();
+        int generarNumerosID();
+        std::string modelarID();
 
         //----------Definicion de estructuras--------------------
         estructuraNIF NIF;
@@ -74,16 +76,18 @@ class Paquete
         //-------------------------ID:
 
         //Inicializador:
-        Paquete(int longitudNumerica, int latitudNumerica,int numerosNIF)
+        Paquete()
         {
             //--------------------Coordenadas
-            Coordenadas.longitudNumerica = longitudNumerica;
-            Coordenadas.latitudNumerica = latitudNumerica;
-            Coordenadas.longitud = modelarLongitud(longitudNumerica);
-            Coordenadas.latitud = modelarLatitud(latitudNumerica);
+            Coordenadas.longitudNumerica = definirLongitud();
+            Coordenadas.latitudNumerica = definirLatitud();
+            Coordenadas.longitud = modelarLongitud(Coordenadas.longitudNumerica);
+            Coordenadas.latitud = modelarLatitud(Coordenadas.latitudNumerica);
             //-----------------------NIF:
-            NIF.numerosNIF = numerosNIF;
-            NIF.NIFCompleto = NIFCompleto(numerosNIF);
+            NIF.NIFCompleto = NIFCompleto(generarNumerosNIF());
+            //------------------------ID:
+            Identificador.numerosID = generarNumerosID();
+            Identificador.ID = modelarID();
 
         }
 

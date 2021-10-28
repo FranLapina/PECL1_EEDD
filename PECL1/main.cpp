@@ -12,12 +12,13 @@ int main()
     for(int i = 0; i <= 11; ++i)
     {
 
-        Paquete paquete(paquete.definirLongitud(),paquete.definirLatitud(),paquete.generarNumerosNIF());
+        Paquete paquete;
         string longitud = paquete.Coordenadas.longitud;
         string latitud = paquete.Coordenadas.latitud;
         string NIF = paquete.NIF.NIFCompleto;
+        string ID = paquete.Identificador.ID;
         cout << "Coordenadas: " << longitud << " | " << latitud << " | "
-             << "DNI: "<< NIF << endl;
+             << "DNI: "<< NIF << " | " << "Identificador: "<< ID <<endl;
 
     }
     utilidades.menu_principal();

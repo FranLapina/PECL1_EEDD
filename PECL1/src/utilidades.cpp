@@ -163,7 +163,30 @@ std::string Paquete::NIFCompleto(int numerosNIF){
 
 //ID PAQUETE
 
+//Genera los números del ID con un random que va de 0 a 999999
+int Paquete::generarNumerosID(){
+    int maximo = 999999;
+    int minimo = 0;
+    int numerosID;
+    numerosID = (minimo + rand() % (maximo+1 - minimo));
+    return numerosID;
+}
 
+//Modela el ID introduciendo 0 a la izquierda en caso de que no cumpla el requisito de 6 cifras numericas
+//Y en la posicion 2 introduce una letra generada con un random como 65 de minimo y 90 de maximo que
+//acapara las mayusculas a nivel numerico dentro de la tabla ascii y las introduce.
+std::string Paquete::modelarID(){
+    std::string numerosID = std::to_string(Identificador.numerosID);
+    while(numerosID.length() < 6){
+        numerosID = "0"+numerosID;
+    }
+    int maximo = 90;
+    int minimo = 65;
+    std::string letraID;
+    letraID = (minimo + rand() % (maximo+1 - minimo));
+    numerosID.insert(2, letraID);
+    return numerosID;
+}
 
 //MENUS
 
