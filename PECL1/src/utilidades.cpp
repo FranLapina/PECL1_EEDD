@@ -222,9 +222,10 @@ void utilidades::menu_principal(){
     cout << "|" << setw (14) << "Identificador" << setw (4) << "|" << setw (23) << "Coordenadas" << setw (14) << "|" << setw (12) << "NIF" << setw (10) << "|" << setw(11) << "Zona de" << setw (4) << "|" << endl;
     cout << "|" << setw (11) << "Paquete" << setw (7) << "|" << setw (20) << "Envio" << setw (17) << "|" << setw(17) << "Destinatario" << setw (5) << "|" << setw(10) << "Envio" << setw (5) << "|"<< endl;
     cout << "---------------------------------------------------------------------------------------------" << endl;
-    cout << "|" << setw (11) << "XXXXXXX" << setw (7) << "|" << setw(27) << "XX XX XX , XX XX XX" << setw (10) << "|" << setw(15) << "XXXXXXXXX" << setw (7) << "|" << setw(9) << "XX" << setw(6) << "|" << endl;
-    cout << "---------------------------------------------------------------------------------------------" << endl;
+
 }
+
+
 
 void utilidades::menu_carga(){
     cout <<  "------------------------------------------------------------------------------------------------------------------------------------------------------" << endl;

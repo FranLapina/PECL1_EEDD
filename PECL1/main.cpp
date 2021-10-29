@@ -1,5 +1,6 @@
 #include <iostream>
 #include <utilidades.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -33,6 +34,12 @@ int main()
 
 
     }
+
+
+
+
+
+    utilidades.menu_principal();
     for(int i = 0; i <= 10; ++i){
         Paquete paquete = muelleDeSalida.arrayPila[i].desapilar();
         string longitud = paquete.Coordenadas.longitud;
@@ -40,14 +47,11 @@ int main()
         string NIF = paquete.NIF.NIFCompleto;
         string ID = paquete.Identificador.ID;
         string zona = paquete.zona;
-        cout << "Coordenadas: " << longitud << " | " << latitud << " | "
-             << "DNI: "<< NIF << " | " << "Identificador: "<< ID << " | " << " Zona: " << zona <<endl;
+        cout << "|" << setw (11) << NIF << setw (7) << "|" << setw(18) << longitud << "," << latitud << setw (7) << "|" << setw(13) << ID << setw (9) << "|" << setw(9) << zona << setw(6) << "|" << endl;
+        cout << "---------------------------------------------------------------------------------------------" << endl;
+
     }
 
-
-
-
-    utilidades.menu_principal();
     cout<< "pito"<< endl;
     utilidades.menu_envio();
     cout << "pito" << endl;
