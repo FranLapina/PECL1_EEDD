@@ -28,8 +28,9 @@ void Pila::apilar(Paquete paquete)
 Paquete Pila::desapilar()
 {
     Paquete paquete;
+    Paquete paqueteNulo("NULL");
     pNodo nodo; //Var aux para manipular el nodo
-    if(!cima) return paquete; // Si no hay nodos en la pila se devuelve 0
+    if(!cima) return paqueteNulo; // Si no hay nodos en la pila se devuelve 0
 // Nodo apunta al primer elemento de la pila
     nodo = cima;
 //Se asigna a pila toda la pila menos el primer elemento

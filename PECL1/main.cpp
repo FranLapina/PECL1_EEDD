@@ -25,30 +25,45 @@ int main()
     //ZONA DE PRUEBAS
     utilidades utilidades;
     //utilidades.menu_principal();
-    MuelleDeSalida muelleDeSalida;
-    for(int i = 0; i <= 10; ++i)
+    MuelleDeSalida muelleDeSalidaNE("NE");
+    MuelleDeSalida muelleDeSalidaNO("NO");
+    MuelleDeSalida muelleDeSalidaSE("SE");
+    MuelleDeSalida muelleDeSalidaSO("SO");
+    for(int i = 0; i < 10; ++i)
     {
+        for(int j = 0; j < 5; ++j){
+            Paquete paquete;
+            if(paquete.zona == "NE"){
+                muelleDeSalidaNE.arrayPila[i].apilar(paquete);
+            }else if(paquete.zona == "NO"){
+                muelleDeSalidaNO.arrayPila[i].apilar(paquete);
+            }else if(paquete.zona == "SE"){
+                muelleDeSalidaSE.arrayPila[i].apilar(paquete);
+            }else if(paquete.zona == "SO"){
+                muelleDeSalidaSO.arrayPila[i].apilar(paquete);
+            }
 
-        Paquete paquete;
-        muelleDeSalida.arrayPila[i].apilar(paquete);
-
+        }
 
     }
 
-
-
-
-
     utilidades.menu_principal();
-    for(int i = 0; i <= 10; ++i){
-        Paquete paquete = muelleDeSalida.arrayPila[i].desapilar();
-        string longitud = paquete.Coordenadas.longitud;
-        string latitud = paquete.Coordenadas.latitud;
-        string NIF = paquete.NIF.NIFCompleto;
-        string ID = paquete.Identificador.ID;
-        string zona = paquete.zona;
-        cout << "|" << setw (11) << NIF << setw (7) << "|" << setw(18) << longitud << "," << latitud << setw (7) << "|" << setw(13) << ID << setw (9) << "|" << setw(9) << zona << setw(6) << "|" << endl;
-        cout << "---------------------------------------------------------------------------------------------" << endl;
+    // Llamada al menu principal y muestreo de los datos de los paquetes generados de forma aleatoria.
+    for(int i = 0; i < 10; ++i){
+
+        while(muelleDeSalidaNE.arrayPila[i].desapilar().Identificador.ID == "NULL"){
+            Paquete paquete = muelleDeSalidaNE.arrayPila[i].desapilar();
+            string longitud = paquete.Coordenadas.longitud;
+            string latitud = paquete.Coordenadas.latitud;
+            string NIF = paquete.NIF.NIFCompleto;
+            string ID = paquete.Identificador.ID;
+            string zona = paquete.zona;
+            cout << "|" << setw (11) << NIF << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (7) << "|" << setw(13) << ID << setw (9) << "|" << setw(9) << zona << setw(6) << "|" << endl;
+            cout << "---------------------------------------------------------------------------------------------" << endl;
+
+
+        }
+
 
     }
 

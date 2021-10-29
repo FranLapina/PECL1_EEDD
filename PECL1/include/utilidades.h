@@ -13,6 +13,8 @@ class utilidades
         void menu_envio();
         void menu_entregados();
 
+
+
     protected:
 
     private:
@@ -54,7 +56,6 @@ class Paquete
             std::string NIFCompleto;
         };
         //---------Definicion de metodos referidos a coordenadas------------
-
         std::string modelarLongitud(int longitudNumerica);
         std::string modelarLatitud(int latitudNumerica);
         //-----------Definicion de metodos referidos a NIF-------------------
@@ -93,6 +94,9 @@ class Paquete
             //------------------------Zona:
             zona = asignarZona();
 
+        }
+        Paquete(std::string id_nulo){
+            Identificador.ID = id_nulo;
         }
 
 
@@ -155,7 +159,7 @@ class MuelleDeSalida{
     public:
         std::string zona;
         Pila arrayPila[10];
-        muelleDeSalida(std::string zona){
+        MuelleDeSalida(std::string zona){
             zona = zona;
             for(int i = 0; i < 10; ++i){
                 Pila pila;
