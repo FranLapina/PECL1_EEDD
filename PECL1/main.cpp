@@ -7,7 +7,7 @@ int main()
 {
 
     //Codigo que crea una pila y lo pasa a una cola.
-    Pila pila;
+    /*Pila pila;
     Cola cola;
     int i = 0, k = 0;
     int MAX = 10;
@@ -19,15 +19,22 @@ int main()
         k = pila.desapilar();
         cola.encolar(k);
         //cout << "Encolando: " << k << endl;
-    }
+    }*/
 
     //ZONA DE PRUEBAS
     utilidades utilidades;
     //utilidades.menu_principal();
-    for(int i = 0; i <= 20; ++i)
+    MuelleDeSalida muelleDeSalida;
+    for(int i = 0; i <= 10; ++i)
     {
 
         Paquete paquete;
+        muelleDeSalida.arrayPila[i].apilar(paquete);
+
+
+    }
+    for(int i = 0; i <= 10; ++i){
+        Paquete paquete = muelleDeSalida.arrayPila[i].desapilar();
         string longitud = paquete.Coordenadas.longitud;
         string latitud = paquete.Coordenadas.latitud;
         string NIF = paquete.NIF.NIFCompleto;
@@ -35,8 +42,11 @@ int main()
         string zona = paquete.zona;
         cout << "Coordenadas: " << longitud << " | " << latitud << " | "
              << "DNI: "<< NIF << " | " << "Identificador: "<< ID << " | " << " Zona: " << zona <<endl;
-
     }
+
+
+
+
     utilidades.menu_principal();
     cout<< "pito"<< endl;
     utilidades.menu_envio();

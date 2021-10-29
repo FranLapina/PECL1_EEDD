@@ -105,14 +105,14 @@ class Paquete
 class Nodo
 {
 private:
-    int valor;
+    Paquete paquete;
     Nodo *siguiente;
     friend class Cola;
     friend class Pila;
 public:
-    Nodo(int v, Nodo *sig = NULL)
+    Nodo(Paquete p, Nodo *sig = NULL)
     {
-        valor = v;
+        paquete = p;
         siguiente = sig;
     }
 };
@@ -121,16 +121,16 @@ typedef Nodo *pNodo;
 /*
     CLASE PILA
 */
-
 class Pila
 {
 private:
     pNodo cima;
 public:
+    int cantidadDePaquetes;
     Pila() : cima(NULL) {} //Constructor de la Pila
     ~Pila();
-    void apilar(int v);
-    int desapilar();
+    void apilar(Paquete paquete);
+    Paquete desapilar();
 };
 
 
@@ -142,10 +142,27 @@ class Cola
 public:
     Cola() : frente(NULL), final(NULL) {}
     ~Cola();
-    void encolar(int v);
-    int desencolar();
+    Paquete encolar(Paquete paquete);
+    Paquete desencolar();
 private:
     pNodo frente, final;
 };
+
+/*
+    CLASE MUELLE
+*/
+class MuelleDeSalida{
+    public:
+        std::string zona;
+        Pila arrayPila[10];
+        muelleDeSalida(std::string zona){
+            zona = zona;
+            for(int i = 0; i < 10; ++i){
+                Pila pila;
+                arrayPila[i] = pila;
+            }
+        }
+    };
+
 
 #endif // UTILIDADES_H

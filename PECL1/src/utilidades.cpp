@@ -16,29 +16,29 @@ Pila::~Pila()
     while(cima) desapilar();
 }
 //Meter elemento en la Pila
-void Pila::apilar(int v)
+void Pila::apilar(Paquete paquete)
 {
     pNodo nuevo; //Var aux para manipular el nuevo nodo
 //Se crea un nodo nuevo
-    nuevo = new Nodo(v, cima);
+    nuevo = new Nodo(paquete, cima);
 //El comienzo de la pila es el nuevo nodo
     cima = nuevo;
 }
 //Sacar elemento de la Pila
-int Pila::desapilar()
+Paquete Pila::desapilar()
 {
+    Paquete paquete;
     pNodo nodo; //Var aux para manipular el nodo
-    int v; //Var aux para el retorno del valor del nodo
-    if(!cima) return 0; // Si no hay nodos en la pila se devuelve 0
+    if(!cima) return paquete; // Si no hay nodos en la pila se devuelve 0
 // Nodo apunta al primer elemento de la pila
     nodo = cima;
 //Se asigna a pila toda la pila menos el primer elemento
     cima= nodo->siguiente;
 //Se guarda el retorno del valor del nodo
-    v = nodo->valor;
+    paquete = nodo->paquete;
 //Se borra el nodo
     delete nodo;
-    return v;
+    return paquete;
 }
 
 //COLAS
@@ -49,34 +49,34 @@ Cola::~Cola()
     while(frente) desencolar();
 }
 //Añadir elemento en la cola
-void Cola::encolar(int v)
+Paquete Cola::encolar(Paquete paquete)
 {
     pNodo nuevo;
-    nuevo = new Nodo(v); // Se crea un nodo nuevo
+    nuevo = new Nodo(paquete); // Se crea un nodo nuevo
 // Si cola no vacía, se añade el nuevo a continuación de ultimo
     if(final) final->siguiente = nuevo;
 //El último elemento de la cola es el nuevo nodo
-    final= nuevo;
+    final = nuevo;
 // Si frente es NULL, la cola está vacía y el nuevo nodo pasa a ser el primero
     if(!frente) frente = nuevo;
 }
 
 //Leer elemento de la cola
-int Cola::desencolar()
+Paquete Cola::desencolar()
 {
     pNodo nodo; //Var aux para manipular nodo
-    int v; //Var aux para retorno del valor
+    Paquete paquete; //Var aux para retorno del valor
 // Nodo apunta al primer elemento de la pila
     nodo = frente;
-    if(!nodo) return 0; // Si no hay nodos en la pila se devuelve 0
+    if(!nodo) return paquete; // Si no hay nodos en la pila se devuelve 0
 //Se asigna a frente la dirección del segundo nodo
     frente = nodo->siguiente;
 //Se guarda el valor de retorno
-    v = nodo->valor;
+    paquete = nodo->paquete;
     delete nodo; // Se borra el nodo
 // Si cola vacía, ultimo debe ser NULL también
     if(!frente) final = NULL;
-    return v;
+    return paquete;
 }
 
 //PAQUETE::COORDENADAS
@@ -208,6 +208,9 @@ std::string Paquete::asignarZona(){
     }
     return "ERROR";
 }
+
+
+
 
 //MENUS
 
