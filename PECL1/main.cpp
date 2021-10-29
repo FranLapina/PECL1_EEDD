@@ -47,8 +47,9 @@ int main()
 
     }
 
-    utilidades.menu_principal();
+
     // Llamada al menu principal y muestreo de los datos de los paquetes generados de forma aleatoria.
+    utilidades.menu_principal();
     for(int i = 0; i < 10; ++i){
 
         while(muelleDeSalidaNE.arrayPila[i].desapilar().Identificador.ID == "NULL"){
