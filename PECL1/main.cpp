@@ -29,18 +29,49 @@ int main()
     MuelleDeSalida muelleDeSalidaNO("NO");
     MuelleDeSalida muelleDeSalidaSE("SE");
     MuelleDeSalida muelleDeSalidaSO("SO");
+    int contadorNE = 0;
+    int contadorNO = 0;
+    int contadorSE = 0;
+    int contadorSO = 0;
     for(int i = 0; i < 10; ++i)
     {
-        for(int j = 0; j < 5; ++j){
+        for(int j = 0; j < 10; ++j){
             Paquete paquete;
             if(paquete.zona == "NE"){
-                muelleDeSalidaNE.arrayPila[i].apilar(paquete);
+                cout << "Paquete entrando en zona NE: " << paquete.zona<<endl;
+                muelleDeSalidaNE.arrayPila[contadorNE].apilar(paquete);
+                muelleDeSalidaNE.arrayPila[contadorNE].cantidadDePaquetes++;
+                muelleDeSalidaNE.paquetesEnMuelle++;
+                if(muelleDeSalidaNE.arrayPila[contadorNE].cantidadDePaquetes == 5){
+                    contadorNE += 1;
+                }
             }else if(paquete.zona == "NO"){
-                muelleDeSalidaNO.arrayPila[i].apilar(paquete);
+                cout << "Paquete entrando en zona NO: "<< paquete.zona<<endl;
+                muelleDeSalidaNO.arrayPila[contadorNO].apilar(paquete);
+                muelleDeSalidaNO.arrayPila[contadorNO].cantidadDePaquetes++;
+                muelleDeSalidaNO.paquetesEnMuelle++;
+                if(muelleDeSalidaNO.arrayPila[contadorNO].cantidadDePaquetes == 5){
+                    contadorNO += 1;
+
+                }
             }else if(paquete.zona == "SE"){
-                muelleDeSalidaSE.arrayPila[i].apilar(paquete);
+                cout << "Paquete entrando en zona SE: " << paquete.zona<<endl;
+                muelleDeSalidaSE.arrayPila[contadorSE].apilar(paquete);
+                muelleDeSalidaSE.arrayPila[contadorSE].cantidadDePaquetes++;
+                muelleDeSalidaSE.paquetesEnMuelle++;
+                if(muelleDeSalidaSE.arrayPila[contadorSE].cantidadDePaquetes == 5){
+                    contadorSE += 1;
+
+                }
             }else if(paquete.zona == "SO"){
-                muelleDeSalidaSO.arrayPila[i].apilar(paquete);
+                cout << "Paquete entrando en zona SO: " << paquete.zona<<endl;
+                muelleDeSalidaSO.arrayPila[contadorSO].apilar(paquete);
+                muelleDeSalidaSO.arrayPila[contadorSO].cantidadDePaquetes++;
+                muelleDeSalidaSO.paquetesEnMuelle++;
+                if(muelleDeSalidaSO.arrayPila[contadorSO].cantidadDePaquetes  == 5){
+                    contadorSO += 1;
+
+                }
             }
 
         }
@@ -50,24 +81,28 @@ int main()
 
     // Llamada al menu principal y muestreo de los datos de los paquetes generados de forma aleatoria.
     utilidades.menu_principal();
-    for(int i = 0; i < 10; ++i){
+    //Paquetes en muelle NE
+    int contador = 0;
 
-        while(muelleDeSalidaNE.arrayPila[i].desapilar().Identificador.ID == "NULL"){
-            Paquete paquete = muelleDeSalidaNE.arrayPila[i].desapilar();
-            string longitud = paquete.Coordenadas.longitud;
-            string latitud = paquete.Coordenadas.latitud;
-            string NIF = paquete.NIF.NIFCompleto;
-            string ID = paquete.Identificador.ID;
-            string zona = paquete.zona;
-            cout << "|" << setw (11) << NIF << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (7) << "|" << setw(13) << ID << setw (9) << "|" << setw(9) << zona << setw(6) << "|" << endl;
-            cout << "---------------------------------------------------------------------------------------------" << endl;
-
-
+    for(int i = 0; i < muelleDeSalidaNO.paquetesEnMuelle; ++i){
+        Paquete paquete = muelleDeSalidaNO.arrayPila[contador].desapilar();
+        string longitud = paquete.Coordenadas.longitud;
+        string latitud = paquete.Coordenadas.latitud;
+        string NIF = paquete.NIF.NIFCompleto;
+        string ID = paquete.Identificador.ID;
+        string zona = paquete.zona;
+        cout << "|" << setw (11) << NIF << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (7) << "|" << setw(13) << ID << setw (9) << "|" << setw(9) << zona << setw(6) << "|" << endl;
+        cout << "---------------------------------------------------------------------------------------------" << endl;
+        muelleDeSalidaNO.arrayPila[contador].cantidadDePaquetes--;
+        if(muelleDeSalidaNO.arrayPila[contador].cantidadDePaquetes == 0){
+            contador++;
         }
-
 
     }
 
+
+
+    /*
     cout<< "pito"<< endl;
     utilidades.menu_envio();
     cout << "pito" << endl;
@@ -76,6 +111,8 @@ int main()
 
     utilidades.menu_entregados();
 
+    */
     //FIN DE ZONA DE PRUEBAS
     return 0;
 }
+

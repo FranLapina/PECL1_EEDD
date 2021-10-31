@@ -28,16 +28,15 @@ void Pila::apilar(Paquete paquete)
 Paquete Pila::desapilar()
 {
     Paquete paquete;
-    Paquete paqueteNulo("NULL");
     pNodo nodo; //Var aux para manipular el nodo
-    if(!cima) return paqueteNulo; // Si no hay nodos en la pila se devuelve 0
-// Nodo apunta al primer elemento de la pila
+    if(!cima) return paquete; // Si no hay nodos en la pila se devuelve 0
+    // Nodo apunta al primer elemento de la pila
     nodo = cima;
-//Se asigna a pila toda la pila menos el primer elemento
-    cima= nodo->siguiente;
-//Se guarda el retorno del valor del nodo
+    //Se asigna a pila toda la pila menos el primer elemento
+    cima = nodo->siguiente;
+    //Se guarda el retorno del valor del nodo
     paquete = nodo->paquete;
-//Se borra el nodo
+    //Se borra el nodo
     delete nodo;
     return paquete;
 }
@@ -65,8 +64,8 @@ Paquete Cola::encolar(Paquete paquete)
 //Leer elemento de la cola
 Paquete Cola::desencolar()
 {
+    Paquete paquete;
     pNodo nodo; //Var aux para manipular nodo
-    Paquete paquete; //Var aux para retorno del valor
 // Nodo apunta al primer elemento de la pila
     nodo = frente;
     if(!nodo) return paquete; // Si no hay nodos en la pila se devuelve 0

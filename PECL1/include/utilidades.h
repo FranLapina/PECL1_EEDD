@@ -95,13 +95,12 @@ class Paquete
             zona = asignarZona();
 
         }
-        Paquete(std::string id_nulo){
-            Identificador.ID = id_nulo;
-        }
 
 
 
 };
+typedef Paquete *pPaquete;
+
 /*
     CLASE NODO
 */
@@ -130,7 +129,7 @@ class Pila
 private:
     pNodo cima;
 public:
-    int cantidadDePaquetes;
+    int cantidadDePaquetes = 0;
     Pila() : cima(NULL) {} //Constructor de la Pila
     ~Pila();
     void apilar(Paquete paquete);
@@ -157,6 +156,7 @@ private:
 */
 class MuelleDeSalida{
     public:
+        int paquetesEnMuelle = 0;
         std::string zona;
         Pila arrayPila[10];
         MuelleDeSalida(std::string zona){
