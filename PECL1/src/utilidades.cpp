@@ -64,12 +64,11 @@ void Cola::encolar(Paquete paquete)
 //Leer elemento de la cola
 Paquete Cola::desencolar()
 {
-    pPaquete paqueteNulo;
     Paquete paquete;
     pNodo nodo; //Var aux para manipular nodo
 // Nodo apunta al primer elemento de la pila
     nodo = frente;
-    if(!nodo) return delete paqueteNulo; // Si no hay nodos en la pila se devuelve 0
+    //if(!nodo) return 0;// Si no hay nodos en la pila se devuelve 0
 //Se asigna a frente la dirección del segundo nodo
     frente = nodo->siguiente;
 //Se guarda el valor de retorno
