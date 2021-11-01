@@ -1,12 +1,26 @@
 #include <iostream>
 #include <utilidades.h>
 #include <iomanip>
+#define N1 100
+#define N2 10
+#define N3 5
+#define ENTER 13
 
 using namespace std;
 
 int main()
 {
-
+    Cola colaInicialPaquetes;
+    //Generar 100 paquetes y meterlos en una cola.
+    for(int i = 0; i < N1; ++i){
+        Paquete paquete;
+        colaInicialPaquetes.encolar(paquete);
+    }
+    utilidades utilidades;
+    // Llamada al menu principal y muestreo de los datos de los paquetes generados de forma aleatoria.
+    utilidades.menu_principal(colaInicialPaquetes, N1);
+    //cin.ignore();
+    colaInicialPaquetes.~Cola();
     //Codigo que crea una pila y lo pasa a una cola.
     /*Pila pila;
     Cola cola;
@@ -22,10 +36,13 @@ int main()
         //cout << "Encolando: " << k << endl;
     }*/
 
+
+
     //ZONA DE PRUEBAS
-    utilidades utilidades;
-    //utilidades.menu_principal();
-    MuelleDeSalida muelleDeSalidaNE("NE");
+
+
+
+    /*MuelleDeSalida muelleDeSalidaNE("NE");
     MuelleDeSalida muelleDeSalidaNO("NO");
     MuelleDeSalida muelleDeSalidaSE("SE");
     MuelleDeSalida muelleDeSalidaSO("SO");
@@ -75,43 +92,25 @@ int main()
 
         }
 
-    }
+    }*/
 
 
-    // Llamada al menu principal y muestreo de los datos de los paquetes generados de forma aleatoria.
-    utilidades.menu_principal();
     //Paquetes en muelle NE
-    int contador = 0;
-
-    for(int i = 0; i < muelleDeSalidaNO.paquetesEnMuelle; ++i){
-        Paquete paquete = muelleDeSalidaNO.arrayPila[contador].desapilar();
-        string longitud = paquete.Coordenadas.longitud;
-        string latitud = paquete.Coordenadas.latitud;
-        string NIF = paquete.NIF.NIFCompleto;
-        string ID = paquete.Identificador.ID;
-        string zona = paquete.zona;
-        cout << "|" << setw (11) << NIF << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (7) << "|" << setw(13) << ID << setw (9) << "|" << setw(9) << zona << setw(6) << "|" << endl;
-        cout << "---------------------------------------------------------------------------------------------" << endl;
-        muelleDeSalidaNO.arrayPila[contador].cantidadDePaquetes--;
-        if(muelleDeSalidaNO.arrayPila[contador].cantidadDePaquetes == 0){
-            contador++;
-        }
-
-    }
+    //Muestra todos los paquetes de un muelle de salida.
 
 
-
-
+    /*
     cout<< "pito"<< endl;
     utilidades.menu_envio();
     cout << "pito" << endl;
-    utilidades.menu_carga();
+    utilidades.menu_carga(muelleDeSalidaNE, muelleDeSalidaNO, muelleDeSalidaSE, muelleDeSalidaSO);
     cout << "pito" << endl;
 
     utilidades.menu_entregados();
 
-
+    */
     //FIN DE ZONA DE PRUEBAS
+
     return 0;
 }
 

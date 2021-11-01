@@ -3,22 +3,7 @@
 #include <cstddef>
 #include <cstdlib>
 #include <string>
-class utilidades
-{
-    public:
-        utilidades();
-        virtual ~utilidades();
-        void menu_principal();
-        void menu_carga();
-        void menu_envio();
-        void menu_entregados();
 
-
-
-    protected:
-
-    private:
-};
 
 /*
     CLASE PAQUETE
@@ -95,11 +80,8 @@ class Paquete
             zona = asignarZona();
 
         }
-
-
-
 };
-typedef Paquete *pPaquete;
+
 
 /*
     CLASE NODO
@@ -145,7 +127,7 @@ class Cola
 public:
     Cola() : frente(NULL), final(NULL) {}
     ~Cola();
-    Paquete encolar(Paquete paquete);
+    void encolar(Paquete paquete);
     Paquete desencolar();
 private:
     pNodo frente, final;
@@ -159,8 +141,8 @@ class MuelleDeSalida{
         int paquetesEnMuelle = 0;
         std::string zona;
         Pila arrayPila[10];
-        MuelleDeSalida(std::string zona){
-            zona = zona;
+        MuelleDeSalida(std::string zonaMuelle){
+            zona = zonaMuelle;
             for(int i = 0; i < 10; ++i){
                 Pila pila;
                 arrayPila[i] = pila;
@@ -168,5 +150,22 @@ class MuelleDeSalida{
         }
     };
 
+//CLASE UTILIDADES
+class utilidades
+{
+    public:
+        utilidades();
+        virtual ~utilidades();
+        void menu_principal(Cola cola, int N1);
+        void menu_carga(MuelleDeSalida muelleDeSalidaNE, MuelleDeSalida muelleDeSalidaNO, MuelleDeSalida muelleDeSalidaSE, MuelleDeSalida muelleDeSalidaSO);
+        void menu_envio();
+        void menu_entregados();
+
+
+
+    protected:
+
+    private:
+};
 
 #endif // UTILIDADES_H
