@@ -215,25 +215,14 @@ std::string Paquete::asignarZona(){
 //MENUS
 
 
-void utilidades::menu_principal(Cola colaInicialPaquetes, int N1){
+void utilidades::menu_principal(){
     cout << "---------------------------------------------------------------------------------------------" << endl;
     cout << "|" << setw (52) << "Cola Paqueteria" << setw (40) << "|" << endl;
     cout << "---------------------------------------------------------------------------------------------" << endl;
     cout << "|" << setw (14) << "Identificador" << setw (4) << "|" << setw (23) << "Coordenadas" << setw (14) << "|" << setw (12) << "NIF" << setw (10) << "|" << setw(11) << "Zona de" << setw (4) << "|" << endl;
     cout << "|" << setw (11) << "Paquete" << setw (7) << "|" << setw (20) << "Envio" << setw (17) << "|" << setw(17) << "Destinatario" << setw (5) << "|" << setw(10) << "Envio" << setw (5) << "|"<< endl;
     cout << "---------------------------------------------------------------------------------------------" << endl;
-    for (int i = 0; i < N1; ++i){
-        cout << i << endl;
-        Paquete paquete = colaInicialPaquetes.desencolar();
-        string longitud = paquete.Coordenadas.longitud;
-        string latitud = paquete.Coordenadas.latitud;
-        string NIF = paquete.NIF.NIFCompleto;
-        string ID = paquete.Identificador.ID;
-        string zona = paquete.zona;
-        cout << "|" << setw (11) << NIF << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (7) << "|" << setw(13) << ID << setw (9) << "|" << setw(9) << zona << setw(6) << "|" << endl;
-        cout << "---------------------------------------------------------------------------------------------" << endl;
-    }
- }
+}
 
 
 
@@ -263,10 +252,10 @@ void utilidades::menu_carga(MuelleDeSalida muelleDeSalidaNE, MuelleDeSalida muel
             cout << setw (19) << "XXXXXXXXXX" << setw (10) << "|";
         }else{
             if(furgonetasLlenasNE == 10){
-                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasNE << setw (10) << "|";
+                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasNE+1 << setw (10) << "|";
                 ++furgonetasLlenasNE;
             }else{
-                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasNE << setw (11) << "|";
+                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasNE+1 << setw (11) << "|";
                 ++furgonetasLlenasNE;
             }
         }
@@ -274,10 +263,10 @@ void utilidades::menu_carga(MuelleDeSalida muelleDeSalidaNE, MuelleDeSalida muel
             cout << setw (19) << "XXXXXXXXXX" << setw (12) << "|";
         }else{
             if(furgonetasLlenasNO == 10){
-                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasNO << setw (10) << "|";
+                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasNO+1 << setw (10) << "|";
                 ++furgonetasLlenasNO;
             }else{
-                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasNO << setw (11) << "|";
+                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasNO+1 << setw (11) << "|";
                 ++furgonetasLlenasNO;
             }
 
@@ -286,10 +275,10 @@ void utilidades::menu_carga(MuelleDeSalida muelleDeSalidaNE, MuelleDeSalida muel
             cout << setw (19) << "XXXXXXXXXX" << setw (12) << "|";
         }else{
             if(furgonetasLlenasSO == 10){
-                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasSO << setw (10) << "|";
+                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasSO+1 << setw (10) << "|";
                 ++furgonetasLlenasSO;
             }else{
-                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasSO << setw (11) << "|";
+                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasSO+1 << setw (11) << "|";
                 ++furgonetasLlenasSO;
             }
 
@@ -298,10 +287,10 @@ void utilidades::menu_carga(MuelleDeSalida muelleDeSalidaNE, MuelleDeSalida muel
             cout << setw (19) << "XXXXXXXXXX" << setw (12) << "|"<< endl;
         }else{
             if(furgonetasLlenasSE == 10){
-                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasSE << setw (10) << "|" << endl;
+                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasSE+1 << setw (10) << "|" << endl;
                 ++furgonetasLlenasSE;
             }else{
-                cout << setw (18) << "Furgoneta: "<< furgonetasLlenasSE << setw (12) << "|" << endl;
+                cout << setw (18) << "Furgoneta: "<< furgonetasLlenasSE+1 << setw (12) << "|" << endl;
                 ++furgonetasLlenasSE;
             }
 

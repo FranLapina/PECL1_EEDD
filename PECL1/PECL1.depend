@@ -8,19 +8,19 @@
 1634901643 c:\workspacecodeblocks\pecl1\include\utilidades.h
 	<cstddef>
 
-1635768065 source:c:\workspacecodeblocks\pecl1_eedd\pecl1\src\utilidades.cpp
+1635773796 source:c:\workspacecodeblocks\pecl1_eedd\pecl1\src\utilidades.cpp
 	"utilidades.h"
 	<cstdlib>
 	<string>
 	<iostream>
 	<iomanip>
 
-1635770193 c:\workspacecodeblocks\pecl1_eedd\pecl1\include\utilidades.h
+1635773025 c:\workspacecodeblocks\pecl1_eedd\pecl1\include\utilidades.h
 	<cstddef>
 	<cstdlib>
 	<string>
 
-1635768316 source:c:\workspacecodeblocks\pecl1_eedd\pecl1\main.cpp
+1635774262 source:c:\workspacecodeblocks\pecl1_eedd\pecl1\main.cpp
 	<iostream>
 	<utilidades.h>
 	<iomanip>

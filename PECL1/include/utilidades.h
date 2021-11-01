@@ -156,7 +156,7 @@ class utilidades
     public:
         utilidades();
         virtual ~utilidades();
-        void menu_principal(Cola cola, int N1);
+        void menu_principal();
         void menu_carga(MuelleDeSalida muelleDeSalidaNE, MuelleDeSalida muelleDeSalidaNO, MuelleDeSalida muelleDeSalidaSE, MuelleDeSalida muelleDeSalidaSO);
         void menu_envio();
         void menu_entregados();
