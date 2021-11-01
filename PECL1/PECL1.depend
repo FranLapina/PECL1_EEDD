@@ -8,7 +8,7 @@
 1634901643 c:\workspacecodeblocks\pecl1\include\utilidades.h
 	<cstddef>
 
-1635773796 source:c:\workspacecodeblocks\pecl1_eedd\pecl1\src\utilidades.cpp
+1635775589 source:c:\workspacecodeblocks\pecl1_eedd\pecl1\src\utilidades.cpp
 	"utilidades.h"
 	<cstdlib>
 	<string>
@@ -20,7 +20,7 @@
 	<cstdlib>
 	<string>
 
-1635774262 source:c:\workspacecodeblocks\pecl1_eedd\pecl1\main.cpp
+1635777562 source:c:\workspacecodeblocks\pecl1_eedd\pecl1\main.cpp
 	<iostream>
 	<utilidades.h>
 	<iomanip>
