@@ -38,7 +38,7 @@ int main()
         for(int j = 0; j < 10; ++j){
             Paquete paquete;
             if(paquete.zona == "NE"){
-                cout << "Paquete entrando en zona NE: " << paquete.zona<<endl;
+                //cout << "Paquete entrando en zona NE: " << paquete.zona<<endl;
                 muelleDeSalidaNE.arrayPila[contadorNE].apilar(paquete);
                 muelleDeSalidaNE.arrayPila[contadorNE].cantidadDePaquetes++;
                 muelleDeSalidaNE.paquetesEnMuelle++;
@@ -46,7 +46,7 @@ int main()
                     contadorNE += 1;
                 }
             }else if(paquete.zona == "NO"){
-                cout << "Paquete entrando en zona NO: "<< paquete.zona<<endl;
+                //cout << "Paquete entrando en zona NO: "<< paquete.zona<<endl;
                 muelleDeSalidaNO.arrayPila[contadorNO].apilar(paquete);
                 muelleDeSalidaNO.arrayPila[contadorNO].cantidadDePaquetes++;
                 muelleDeSalidaNO.paquetesEnMuelle++;
@@ -55,7 +55,7 @@ int main()
 
                 }
             }else if(paquete.zona == "SE"){
-                cout << "Paquete entrando en zona SE: " << paquete.zona<<endl;
+                //cout << "Paquete entrando en zona SE: " << paquete.zona<<endl;
                 muelleDeSalidaSE.arrayPila[contadorSE].apilar(paquete);
                 muelleDeSalidaSE.arrayPila[contadorSE].cantidadDePaquetes++;
                 muelleDeSalidaSE.paquetesEnMuelle++;
@@ -64,13 +64,12 @@ int main()
 
                 }
             }else if(paquete.zona == "SO"){
-                cout << "Paquete entrando en zona SO: " << paquete.zona<<endl;
+                //cout << "Paquete entrando en zona SO: " << paquete.zona<<endl;
                 muelleDeSalidaSO.arrayPila[contadorSO].apilar(paquete);
                 muelleDeSalidaSO.arrayPila[contadorSO].cantidadDePaquetes++;
                 muelleDeSalidaSO.paquetesEnMuelle++;
                 if(muelleDeSalidaSO.arrayPila[contadorSO].cantidadDePaquetes  == 5){
                     contadorSO += 1;
-
                 }
             }
 
@@ -102,7 +101,7 @@ int main()
 
 
 
-    /*
+
     cout<< "pito"<< endl;
     utilidades.menu_envio();
     cout << "pito" << endl;
@@ -111,7 +110,7 @@ int main()
 
     utilidades.menu_entregados();
 
-    */
+
     //FIN DE ZONA DE PRUEBAS
     return 0;
 }
