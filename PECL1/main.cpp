@@ -7,8 +7,12 @@
 
 using namespace std;
 
+
+
+
 int main()
 {
+
     string enter;
     Paquete paqueteAux;
     MuelleDeSalida muelleDeSalidaNE("NE");
@@ -20,6 +24,7 @@ int main()
     int contadorSE = 0;
     int contadorSO = 0;
     int contadorGlobal = 0;
+    int furgonetasLlenasNE, furgonetasLlenasNO, furgonetasLlenasSE, furgonetasLlenasSO;
     Cola colaInicialPaquetes;
     Cola colaAux;
     utilidades utilidades;
@@ -28,6 +33,11 @@ int main()
     for(int i = 0; i < N1; ++i){
         Paquete paquete;
         paquete.generarPaquete();
+        //COLA Inicial Paquetes paquetes urgentes
+        //ColaAux resto de paquetes
+        //encolar cola aux a cola inicial para concatenar resto de paquetes a urgentes
+        //random de 1 al 9, si sale 2 u 8 urgente, si sale otro numero normal.
+        //urgente true o false.
         colaInicialPaquetes.encolar(paquete);
         colaAux.encolar(paquete);
         string longitud = paquete.Coordenadas.longitud;
@@ -43,7 +53,7 @@ int main()
     //Pasar de cola a pila
     while(contadorGlobal < 10){
         cout << "Presiona enter para pasar 10 paquetes a las furgonetas" << endl;
-        cin.ignore();
+        //cin.ignore();
         for(int i = 0; i < N2; ++i){
             contadorNE = muelleDeSalidaNE.paquetesEnMuelle/5;
             contadorNO = muelleDeSalidaNO.paquetesEnMuelle/5;
@@ -86,10 +96,10 @@ int main()
         cout << setw(17) << "Zona NE" << setw(14) << "|" << setw(17) << "Zona NO" << setw(14) << "|" << setw(17) << "Zona SO"
         << setw(14) << "|" << setw(17) << "Zona SE" << setw(14) << "|" << endl;
         cout << "----------------------------------------------------------------------------------------------------------------------------" << endl;
-        int furgonetasLlenasNE = (muelleDeSalidaNE.paquetesEnMuelle/5);
-        int furgonetasLlenasNO = (muelleDeSalidaNO.paquetesEnMuelle/5);
-        int furgonetasLlenasSE = (muelleDeSalidaSE.paquetesEnMuelle/5);
-        int furgonetasLlenasSO = (muelleDeSalidaSO.paquetesEnMuelle/5);
+        furgonetasLlenasNE = (muelleDeSalidaNE.paquetesEnMuelle/5);
+        furgonetasLlenasNO = (muelleDeSalidaNO.paquetesEnMuelle/5);
+        furgonetasLlenasSE = (muelleDeSalidaSE.paquetesEnMuelle/5);
+        furgonetasLlenasSO = (muelleDeSalidaSO.paquetesEnMuelle/5);
         int furgonetasMinimo;
         if((furgonetasLlenasNE < furgonetasLlenasNO) && (furgonetasLlenasNE < furgonetasLlenasSE) && (furgonetasLlenasNE < furgonetasLlenasSO)){
             furgonetasMinimo = furgonetasLlenasNE;
@@ -147,6 +157,46 @@ int main()
         }
     }
 
+    Cola colaNE,colaNO,colaSE,colaSO;
+    //Pilas a colas
+    //Muelle NE
+
+    while(contadorGlobal >= 0){
+
+        int posicion = 9 - contadorGlobal;
+        for(int i = 1; i <= 5; ++i){
+            if(muelleDeSalidaNE.arrayPila[posicion].cantidadDePaquetes >= i && muelleDeSalidaNE.arrayPila[posicion].cantidadDePaquetes < 6){
+               colaNE.encolar(muelleDeSalidaNE.arrayPila[posicion].desapilar());
+
+            }
+            if(muelleDeSalidaNO.arrayPila[posicion].cantidadDePaquetes >= i && muelleDeSalidaNO.arrayPila[posicion].cantidadDePaquetes < 6){
+                colaNO.encolar(muelleDeSalidaNO.arrayPila[posicion].desapilar());
+
+            }
+            if(muelleDeSalidaSE.arrayPila[posicion].cantidadDePaquetes >= i && muelleDeSalidaSE.arrayPila[posicion].cantidadDePaquetes < 6){
+                colaSE.encolar(muelleDeSalidaSE.arrayPila[posicion].desapilar());
+            }
+            if(muelleDeSalidaSO.arrayPila[posicion].cantidadDePaquetes >= i && muelleDeSalidaSO.arrayPila[posicion].cantidadDePaquetes < 6){
+                colaSO.encolar(muelleDeSalidaSO.arrayPila[posicion].desapilar());
+            }
+
+        }
+        --contadorGlobal;
+    }
+
+    //TODO: MOSTRAR COLAS DE CADA ZONA POR PANTALLA Y PAQUETES URGENTES
+    //Paquetes urgentes:
+
+        /*
+
+
+            Meter paquetes urgentes en una pila de urgentes, recorrer esa pila metiendolos en los muelles correspondientes los primeros.
+            USAR colaAux;
+
+
+
+        */
+
     //Codigo que crea una pila y lo pasa a una cola.
     /*Pila pila;
     Cola cola;
@@ -164,74 +214,7 @@ int main()
 
 
 
-    //ZONA DE PRUEBAS
 
-
-
-    /*MuelleDeSalida muelleDeSalidaNE("NE");
-    MuelleDeSalida muelleDeSalidaNO("NO");
-    MuelleDeSalida muelleDeSalidaSE("SE");
-    MuelleDeSalida muelleDeSalidaSO("SO");
-    int contadorNE = 0;
-    int contadorNO = 0;
-    int contadorSE = 0;
-    int contadorSO = 0;
-    for(int i = 0; i < 10; ++i)
-    {
-        for(int j = 0; j < 10; ++j){
-            Paquete paquete;
-            if(paquete.zona == "NE"){
-                //cout << "Paquete entrando en zona NE: " << paquete.zona<<endl;
-                muelleDeSalidaNE.arrayPila[contadorNE].apilar(paquete);
-                muelleDeSalidaNE.arrayPila[contadorNE].cantidadDePaquetes++;
-                muelleDeSalidaNE.paquetesEnMuelle++;
-                if(muelleDeSalidaNE.arrayPila[contadorNE].cantidadDePaquetes == 5){
-                    contadorNE += 1;
-                }
-            }else if(paquete.zona == "NO"){
-                //cout << "Paquete entrando en zona NO: "<< paquete.zona<<endl;
-                muelleDeSalidaNO.arrayPila[contadorNO].apilar(paquete);
-                muelleDeSalidaNO.arrayPila[contadorNO].cantidadDePaquetes++;
-                muelleDeSalidaNO.paquetesEnMuelle++;
-                if(muelleDeSalidaNO.arrayPila[contadorNO].cantidadDePaquetes == 5){
-                    contadorNO += 1;
-
-                }
-            }else if(paquete.zona == "SE"){
-                //cout << "Paquete entrando en zona SE: " << paquete.zona<<endl;
-                muelleDeSalidaSE.arrayPila[contadorSE].apilar(paquete);
-                muelleDeSalidaSE.arrayPila[contadorSE].cantidadDePaquetes++;
-                muelleDeSalidaSE.paquetesEnMuelle++;
-                if(muelleDeSalidaSE.arrayPila[contadorSE].cantidadDePaquetes == 5){
-                    contadorSE += 1;
-
-                }
-            }else if(paquete.zona == "SO"){
-                //cout << "Paquete entrando en zona SO: " << paquete.zona<<endl;
-                muelleDeSalidaSO.arrayPila[contadorSO].apilar(paquete);
-                muelleDeSalidaSO.arrayPila[contadorSO].cantidadDePaquetes++;
-                muelleDeSalidaSO.paquetesEnMuelle++;
-                if(muelleDeSalidaSO.arrayPila[contadorSO].cantidadDePaquetes  == 5){
-                    contadorSO += 1;
-                }
-            }
-
-        }
-
-    }*/
-
-
-    //Paquetes en muelle NE
-    //Muestra todos los paquetes de un muelle de salida.
-
-
-    //cout<< "pito"<< endl;
-    //utilidades.menu_envio();
-    //cout << "pito" << endl;
-    //cout << "pito" << endl;
-
-    //utilidades.menu_entregados();
-    //FIN DE ZONA DE PRUEBAS
 
     return 0;
 }
