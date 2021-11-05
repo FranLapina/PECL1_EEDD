@@ -38,7 +38,7 @@ class Paquete
             const static int NIF_MAX = 99999999;
             const static int NIF_MIN = 100;
             int numerosNIF;
-            std::string NIFCompleto;
+            std::string NIFCompleto = "";
         };
         //---------Definicion de metodos referidos a coordenadas------------
         std::string modelarLongitud(int longitudNumerica);
@@ -64,7 +64,7 @@ class Paquete
         estructuraCoordenadas Coordenadas;
         estructuraIdentificador Identificador;
         //Inicializador:
-        Paquete()
+        void generarPaquete()
         {
             //--------------------Coordenadas
             Coordenadas.longitudNumerica = definirLongitud();
@@ -140,7 +140,7 @@ class MuelleDeSalida{
     public:
         int paquetesEnMuelle = 0;
         std::string zona;
-        Pila arrayPila[10];
+        Pila arrayPila[9];
         MuelleDeSalida(std::string zonaMuelle){
             zona = zonaMuelle;
             for(int i = 0; i < 10; ++i){

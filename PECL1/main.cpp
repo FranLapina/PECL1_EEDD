@@ -10,6 +10,7 @@ using namespace std;
 int main()
 {
     string enter;
+    Paquete paqueteAux;
     MuelleDeSalida muelleDeSalidaNE("NE");
     MuelleDeSalida muelleDeSalidaNO("NO");
     MuelleDeSalida muelleDeSalidaSE("SE");
@@ -20,26 +21,25 @@ int main()
     int contadorSO = 0;
     int contadorGlobal = 0;
     Cola colaInicialPaquetes;
-    //Generar 100 paquetes y meterlos en una cola.
+    Cola colaAux;
+    utilidades utilidades;
+    //Generar 100 paquetes y meterlos en una cola y llamada al menu principal y muestreo de los datos de los paquetes generados de forma aleatoria.
+    utilidades.menu_principal();
     for(int i = 0; i < N1; ++i){
         Paquete paquete;
+        paquete.generarPaquete();
         colaInicialPaquetes.encolar(paquete);
-    }
-    utilidades utilidades;
-    // Llamada al menu principal y muestreo de los datos de los paquetes generados de forma aleatoria.
-
-    utilidades.menu_principal();
-    for (int i = 1; i < N1; ++i){
-        Paquete paquete = colaInicialPaquetes.desencolar();
-        colaInicialPaquetes.encolar(paquete);
+        colaAux.encolar(paquete);
         string longitud = paquete.Coordenadas.longitud;
         string latitud = paquete.Coordenadas.latitud;
         string NIF = paquete.NIF.NIFCompleto;
         string ID = paquete.Identificador.ID;
         string zona = paquete.zona;
-        cout << "|" << setw (11) << NIF << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (7) << "|" << setw(13) << ID << setw (9) << "|" << setw(9) << zona << setw(6) << "|" << endl;
+        cout << "|" << setw (11) << NIF << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (6) << "|" << setw(12) << ID
+        << setw (9) << "|" << setw(9) << zona << setw(6) << "|" << endl;
         cout << "---------------------------------------------------------------------------------------------" << endl;
     }
+
     //Pasar de cola a pila
     while(contadorGlobal < 10){
         cout << "Presiona enter para pasar 10 paquetes a las furgonetas" << endl;
@@ -49,36 +49,42 @@ int main()
             contadorNO = muelleDeSalidaNO.paquetesEnMuelle/5;
             contadorSE = muelleDeSalidaSE.paquetesEnMuelle/5;
             contadorSO = muelleDeSalidaSO.paquetesEnMuelle/5;
-            Paquete paquete = colaInicialPaquetes.desencolar();
-            if(paquete.zona == "NE"){
-                //cout << "Paquete entrando en zona NE: " << paquete.zona<<endl;
-                muelleDeSalidaNE.arrayPila[contadorNE].apilar(paquete);
+            paqueteAux = colaInicialPaquetes.desencolar();
+            cout << "---------------------------------------------------------------------" << endl;
+            if(paqueteAux.zona == "NE"){
+                muelleDeSalidaNE.arrayPila[contadorNE].apilar(paqueteAux);
                 muelleDeSalidaNE.arrayPila[contadorNE].cantidadDePaquetes++;
                 muelleDeSalidaNE.paquetesEnMuelle++;
+                cout << "Paquete entrando en zona NE: " << paqueteAux.Identificador.ID <<". Furgoneta: "<<contadorNE+1 << " Espacio libre: "<< 5-muelleDeSalidaNE.arrayPila[contadorNE].cantidadDePaquetes<<" | "<<endl;
 
-            }else if(paquete.zona == "NO"){
-                //cout << "Paquete entrando en zona NO: "<< paquete.zona<<endl;
-                muelleDeSalidaNO.arrayPila[contadorNO].apilar(paquete);
+            }else if(paqueteAux.zona == "NO"){
+                muelleDeSalidaNO.arrayPila[contadorNO].apilar(paqueteAux);
                 muelleDeSalidaNO.arrayPila[contadorNO].cantidadDePaquetes++;
                 muelleDeSalidaNO.paquetesEnMuelle++;
+                cout << "Paquete entrando en zona NO: "<< paqueteAux.Identificador.ID <<". Furgoneta: "<<contadorNO+1<< " Espacio libre: "<< 5-muelleDeSalidaNO.arrayPila[contadorNO].cantidadDePaquetes<<" | "<<endl;
 
-            }else if(paquete.zona == "SE"){
-                //cout << "Paquete entrando en zona SE: " << paquete.zona<<endl;
-                muelleDeSalidaSE.arrayPila[contadorSE].apilar(paquete);
+
+            }else if(paqueteAux.zona == "SE"){
+                muelleDeSalidaSE.arrayPila[contadorSE].apilar(paqueteAux);
                 muelleDeSalidaSE.arrayPila[contadorSE].cantidadDePaquetes++;
                 muelleDeSalidaSE.paquetesEnMuelle++;
+                cout << "Paquete entrando en zona SE: " << paqueteAux.Identificador.ID <<". Furgoneta: "<<contadorSE+1 << " Espacio libre: "<< 5-muelleDeSalidaSE.arrayPila[contadorSE].cantidadDePaquetes<<" | "<<endl;
 
-            }else if(paquete.zona == "SO"){
-                //cout << "Paquete entrando en zona SO: " << paquete.zona<<endl;
-                muelleDeSalidaSO.arrayPila[contadorSO].apilar(paquete);
+
+            }else if(paqueteAux.zona == "SO"){
+                muelleDeSalidaSO.arrayPila[contadorSO].apilar(paqueteAux);
                 muelleDeSalidaSO.arrayPila[contadorSO].cantidadDePaquetes++;
                 muelleDeSalidaSO.paquetesEnMuelle++;
+                cout << "Paquete entrando en zona SO: " << paqueteAux.Identificador.ID <<". Furgoneta: "<< contadorSO+1 << " Espacio libre: "<< 5-muelleDeSalidaSO.arrayPila[contadorSO].cantidadDePaquetes<<" | "<<endl;
+
             }
         }
+        cout << "---------------------------------------------------------------------" << endl;
         ++contadorGlobal;
         //Menu de carga
         cout <<  "----------------------------------------------------------------------------------------------------------------------------" << endl;
-        cout << setw(17) << "Zona NE" << setw(14) << "|" << setw(17) << "Zona NO" << setw(14) << "|" << setw(17) << "Zona SO" << setw(14) << "|" << setw(17) << "Zona SE" << setw(14) << "|" << endl;
+        cout << setw(17) << "Zona NE" << setw(14) << "|" << setw(17) << "Zona NO" << setw(14) << "|" << setw(17) << "Zona SO"
+        << setw(14) << "|" << setw(17) << "Zona SE" << setw(14) << "|" << endl;
         cout << "----------------------------------------------------------------------------------------------------------------------------" << endl;
         int furgonetasLlenasNE = (muelleDeSalidaNE.paquetesEnMuelle/5);
         int furgonetasLlenasNO = (muelleDeSalidaNO.paquetesEnMuelle/5);
@@ -95,53 +101,47 @@ int main()
             furgonetasMinimo = furgonetasLlenasSO;
         }
 
-        for(int i = furgonetasMinimo; i <= 10; ++i){
-            if(furgonetasLlenasNE > 10){
-                cout << setw (19) << "XXXXXXXXXX" << setw (10) << "|";
-            }else{
-                if(furgonetasLlenasNE == 10){
-                    cout << setw (19) << "Furgoneta: "<< furgonetasLlenasNE+1 << setw (10) << "|";
-                    ++furgonetasLlenasNE;
-                }else{
-                    cout << setw (19) << "Furgoneta: "<< furgonetasLlenasNE+1 << setw (11) << "|";
-                    ++furgonetasLlenasNE;
-                }
-            }
-            if(furgonetasLlenasNO > 10){
-                cout << setw (19) << "XXXXXXXXXX" << setw (12) << "|";
-            }else{
-                if(furgonetasLlenasNO == 10){
-                    cout << setw (19) << "Furgoneta: "<< furgonetasLlenasNO+1 << setw (10) << "|";
-                    ++furgonetasLlenasNO;
-                }else{
-                    cout << setw (19) << "Furgoneta: "<< furgonetasLlenasNO+1 << setw (11) << "|";
-                    ++furgonetasLlenasNO;
-                }
+        for(int i = furgonetasMinimo; i < 10; ++i){
 
-            }
-            if(furgonetasLlenasSO > 10){
-                cout << setw (19) << "XXXXXXXXXX" << setw (12) << "|";
+            if(furgonetasLlenasNE == 9){
+                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasNE+1 << setw (10) << "|";
+                ++furgonetasLlenasNE;
+            }else if(furgonetasLlenasNE < 9){
+                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasNE+1 << setw (11) << "|";
+                ++furgonetasLlenasNE;
             }else{
-                if(furgonetasLlenasSO == 10){
-                    cout << setw (19) << "Furgoneta: "<< furgonetasLlenasSO+1 << setw (10) << "|";
-                    ++furgonetasLlenasSO;
-                }else{
-                    cout << setw (19) << "Furgoneta: "<< furgonetasLlenasSO+1 << setw (11) << "|";
-                    ++furgonetasLlenasSO;
-                }
-
+                cout << setw (19) << "------------"<< setw (12) << "|";
             }
-            if(furgonetasLlenasSE > 10){
-                cout << setw (19) << "XXXXXXXXXX" << setw (12) << "|"<< endl;
-            }else{
-                if(furgonetasLlenasSE == 10){
-                    cout << setw (19) << "Furgoneta: "<< furgonetasLlenasSE+1 << setw (10) << "|" << endl;
-                    ++furgonetasLlenasSE;
-                }else{
-                    cout << setw (18) << "Furgoneta: "<< furgonetasLlenasSE+1 << setw (12) << "|" << endl;
-                    ++furgonetasLlenasSE;
-                }
 
+
+            if(furgonetasLlenasNO == 9){
+                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasNO+1 << setw (10) << "|";
+                ++furgonetasLlenasNO;
+            }else if(furgonetasLlenasNO < 9){
+                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasNO+1 << setw (11) << "|";
+                ++furgonetasLlenasNO;
+            }else{
+                cout << setw (19) << "------------"<< setw (12) << "|" ;
+            }
+
+            if(furgonetasLlenasSO == 9){
+                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasSO+1 << setw (10) << "|";
+                ++furgonetasLlenasSO;
+            }else if (furgonetasLlenasSO < 9){
+                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasSO+1 << setw (11) << "|";
+                ++furgonetasLlenasSO;
+            }else{
+                cout << setw (19) << "------------"<< setw (12) << "|" ;
+            }
+
+            if(furgonetasLlenasSE == 9){
+                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasSE+1 << setw (10) << "|" << endl;
+                ++furgonetasLlenasSE;
+            }else if(furgonetasLlenasSE < 9){
+                cout << setw (19) << "Furgoneta: "<< furgonetasLlenasSE+1 << setw (11) << "|" << endl;
+                ++furgonetasLlenasSE;
+            }else{
+                cout << setw (19) << "------------"<< setw (12) << "|" << endl;
             }
             cout << "----------------------------------------------------------------------------------------------------------------------------" << endl;
         }
@@ -225,16 +225,12 @@ int main()
     //Muestra todos los paquetes de un muelle de salida.
 
 
-    /*
-    cout<< "pito"<< endl;
-    utilidades.menu_envio();
-    cout << "pito" << endl;
-    utilidades.menu_carga(muelleDeSalidaNE, muelleDeSalidaNO, muelleDeSalidaSE, muelleDeSalidaSO);
-    cout << "pito" << endl;
+    //cout<< "pito"<< endl;
+    //utilidades.menu_envio();
+    //cout << "pito" << endl;
+    //cout << "pito" << endl;
 
-    utilidades.menu_entregados();
-
-    */
+    //utilidades.menu_entregados();
     //FIN DE ZONA DE PRUEBAS
 
     return 0;

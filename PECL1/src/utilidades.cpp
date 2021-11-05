@@ -46,7 +46,9 @@ Paquete Pila::desapilar()
 //Destructor
 Cola::~Cola()
 {
-    while(frente) desencolar();
+    while(desencolar().NIF.NIFCompleto != ""){
+        desencolar();
+    }
 }
 //Añadir elemento en la cola
 void Cola::encolar(Paquete paquete)
@@ -68,7 +70,7 @@ Paquete Cola::desencolar()
     pNodo nodo; //Var aux para manipular nodo
 // Nodo apunta al primer elemento de la pila
     nodo = frente;
-    //if(!nodo) return 0;// Si no hay nodos en la pila se devuelve 0
+    if(!nodo) return paquete;// Si no hay nodos en la pila se devuelve 0
 //Se asigna a frente la dirección del segundo nodo
     frente = nodo->siguiente;
 //Se guarda el valor de retorno
@@ -232,7 +234,7 @@ void utilidades::menu_carga(MuelleDeSalida muelleDeSalidaNE, MuelleDeSalida muel
     cout <<  "----------------------------------------------------------------------------------------------------------------------------" << endl;
     cout << setw(17) << "Zona NE" << setw(14) << "|" << setw(17) << "Zona NO" << setw(14) << "|" << setw(17) << "Zona SO" << setw(14) << "|" << setw(17) << "Zona SE" << setw(14) << "|" << endl;
     cout << "----------------------------------------------------------------------------------------------------------------------------" << endl;
-    /*int furgonetasLlenasNE = (muelleDeSalidaNE.paquetesEnMuelle/5);
+    int furgonetasLlenasNE = (muelleDeSalidaNE.paquetesEnMuelle/5);
     int furgonetasLlenasNO = (muelleDeSalidaNO.paquetesEnMuelle/5);
     int furgonetasLlenasSE = (muelleDeSalidaSE.paquetesEnMuelle/5);
     int furgonetasLlenasSO = (muelleDeSalidaSO.paquetesEnMuelle/5);
@@ -296,7 +298,7 @@ void utilidades::menu_carga(MuelleDeSalida muelleDeSalidaNE, MuelleDeSalida muel
 
         }
         cout << "----------------------------------------------------------------------------------------------------------------------------" << endl;
-    }*/
+    }
 
 
 }
