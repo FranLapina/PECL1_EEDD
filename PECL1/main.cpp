@@ -71,8 +71,8 @@ int main()
 
     //Pasar de cola a pila
     while(contadorGlobal < 10){
-        //cout << "Presiona enter para pasar 10 paquetes a las furgonetas" << endl;
-        //cin.ignore();
+        cout << "Presiona enter para pasar 10 paquetes a las furgonetas" << endl;
+        cin.ignore();
         for(int i = 0; i < N2; ++i){
             contadorNE = muelleDeSalidaNE.paquetesEnMuelle/5;
             contadorNO = muelleDeSalidaNO.paquetesEnMuelle/5;
@@ -222,9 +222,9 @@ int main()
         }
         --contadorGlobal;
     }
-    cout << "---------------------------------------------------------------------------------------------" << endl;
-    cout << "|" << setw(50) << "Zona Noreste" << setw(42) << "|" << endl;
-    cout << "---------------------------------------------------------------------------------------------" << endl;
+    cout << "-----------------------------------------------------------------------------------------------------------" << endl;
+    cout << "|" << setw(59) << "Zona Noreste" << setw(47) << "|" << endl;
+    utilidades.menu_principal();
     do{
 
         paqueteAux = colaNE.desencolar();
@@ -242,9 +242,9 @@ int main()
         }
 
     }while(paqueteAux.NIF.NIFCompleto != "");
-    cout << "---------------------------------------------------------------------------------------------" << endl;
-    cout << "|" << setw(50) << "Zona Noroeste" << setw(42) << "|" << endl;
-    cout << "---------------------------------------------------------------------------------------------" << endl;
+    cout << "-----------------------------------------------------------------------------------------------------------" << endl;
+    cout << "|" << setw(59) << "Zona Noroeste" << setw(47) << "|" << endl;
+    utilidades.menu_principal();
     do{
 
         paqueteAux = colaNO.desencolar();
@@ -263,28 +263,9 @@ int main()
 
 
     }while(paqueteAux.NIF.NIFCompleto != "");
-     cout << "---------------------------------------------------------------------------------------------" << endl;
-    cout << "|" << setw(50) << "Zona Sureste" << setw(42) << "|" << endl;
-    cout << "---------------------------------------------------------------------------------------------" << endl;
-    do{
-
-        paqueteAux = colaSE.desencolar();
-        if(paqueteAux.NIF.NIFCompleto != ""){
-            string urgencia;
-            if(paqueteAux.urgente){urgencia = "SI";}else urgencia = "NO";
-            string longitud = paqueteAux.Coordenadas.longitud;
-            string latitud = paqueteAux.Coordenadas.latitud;
-            string NIF = paqueteAux.NIF.NIFCompleto;
-            string ID = paqueteAux.Identificador.ID;
-            string zona = paqueteAux.zona;
-            cout << "|" << setw (11) << ID << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (5) << "|" << setw(15) << NIF
-            << setw (7) << "|" << setw(8) << zona << setw(7) << "|" << setw(7)<< urgencia << setw(7)<< "|" <<endl;
-            cout << "-----------------------------------------------------------------------------------------------------------" << endl;
-        }
-    }while(paqueteAux.NIF.NIFCompleto != "");
-    cout << "---------------------------------------------------------------------------------------------" << endl;
-    cout << "|" << setw(50) << "Zona Suroeste" << setw(42) << "|" << endl;
-    cout << "---------------------------------------------------------------------------------------------" << endl;
+    cout << "-----------------------------------------------------------------------------------------------------------" << endl;
+    cout << "|" << setw(59) << "Zona Sureste" << setw(47) << "|" << endl;
+    utilidades.menu_principal();
     do{
 
         paqueteAux = colaSE.desencolar();
@@ -301,7 +282,11 @@ int main()
             cout << "-----------------------------------------------------------------------------------------------------------" << endl;
         }
 
+
     }while(paqueteAux.NIF.NIFCompleto != "");
+    cout << "-----------------------------------------------------------------------------------------------------------" << endl;
+    cout << "|" << setw(59) << "Zona Suroeste" << setw(47) << "|" << endl;
+    utilidades.menu_principal();
     do{
 
         paqueteAux = colaSO.desencolar();

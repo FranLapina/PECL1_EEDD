@@ -149,10 +149,10 @@ class MuelleDeSalida{
         Pila arrayPila[9];
         MuelleDeSalida(std::string zonaMuelle){
             zona = zonaMuelle;
-            for(int i = 0; i <= 9; ++i){
+           /* for(int i = 0; i <= 9; ++i){
                 Pila pila;
                 arrayPila[i] = pila;
-            }
+            }*/
 
         }
     };

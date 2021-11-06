@@ -15,12 +15,12 @@
 	<iostream>
 	<iomanip>
 
-1636203792 c:\workspacecodeblocks\pecl1_eedd\pecl1\include\utilidades.h
+1636211556 c:\workspacecodeblocks\pecl1_eedd\pecl1\include\utilidades.h
 	<cstddef>
 	<cstdlib>
 	<string>
 
-1636204410 source:c:\workspacecodeblocks\pecl1_eedd\pecl1\main.cpp
+1636211733 source:c:\workspacecodeblocks\pecl1_eedd\pecl1\main.cpp
 	<iostream>
 	<utilidades.h>
 	<iomanip>
