@@ -40,6 +40,20 @@ Paquete Pila::desapilar()
     delete nodo;
     return paquete;
 }
+void Pila::invertir(){
+    Paquete paquete;
+    Paquete arrayPaquete[5];
+    int contador = 0;
+    paquete = desapilar();
+    while(paquete.NIF.NIFCompleto != ""){
+        arrayPaquete[contador] = paquete;
+        ++contador;
+        paquete = desapilar();
+    }
+    for(int i = 0; i < contador; ++i){
+        apilar(arrayPaquete[i]);
+    }
+}
 
 //COLAS
 
@@ -210,7 +224,13 @@ std::string Paquete::asignarZona(){
     }
     return "ERROR";
 }
-
+//Paquete urgente
+bool Paquete::paqueteUrgente(){
+    int numero = rand()%11;
+    if(numero == 2 || numero == 8){
+        return true;
+    }else return false;
+}
 
 
 
@@ -218,12 +238,13 @@ std::string Paquete::asignarZona(){
 
 
 void utilidades::menu_principal(){
-    cout << "---------------------------------------------------------------------------------------------" << endl;
-    cout << "|" << setw (52) << "Cola Paqueteria" << setw (40) << "|" << endl;
-    cout << "---------------------------------------------------------------------------------------------" << endl;
-    cout << "|" << setw (14) << "Identificador" << setw (4) << "|" << setw (23) << "Coordenadas" << setw (14) << "|" << setw (12) << "NIF" << setw (10) << "|" << setw(11) << "Zona de" << setw (4) << "|" << endl;
-    cout << "|" << setw (11) << "Paquete" << setw (7) << "|" << setw (20) << "Envio" << setw (17) << "|" << setw(17) << "Destinatario" << setw (5) << "|" << setw(10) << "Envio" << setw (5) << "|"<< endl;
-    cout << "---------------------------------------------------------------------------------------------" << endl;
+    cout << "-----------------------------------------------------------------------------------------------------------" << endl;
+    cout << "|" << setw (61) << "Cola Paqueteria" << setw (45) << "|" << endl;
+    cout << "-----------------------------------------------------------------------------------------------------------" << endl;
+    cout << "|" << setw (14) << "Identificador" << setw (4) << "|" << setw (23) << "Coordenadas" << setw (14) << "|" << setw (12) << "NIF" << setw (10) << "|" << setw(11) << "Zona de" << setw (4) << "|" << setw(10) << "Paquete" << setw(4)<<"|" <<endl;
+    cout << "|" << setw (11) << "Paquete" << setw (7) << "|" << setw (20) << "Envio" << setw (17) << "|" << setw(17) << "Destinatario"
+    << setw (5) << "|" << setw(10) << "Envio" << setw (5) << "|"<< setw(10) <<"urgente"<<setw(4)<< "|" <<endl;
+    cout << "-----------------------------------------------------------------------------------------------------------" << endl;
 }
 
 
@@ -361,4 +382,5 @@ void utilidades::menu_entregados(){
     cout << "-------------------------------------------" << endl;
 
 }
+
 

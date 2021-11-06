@@ -49,6 +49,7 @@ class Paquete
         std::string modelarID();
         //-----------Definicion de metodos referidos a zona-------------------
         std::string asignarZona();
+        bool paqueteUrgente();
     public:
         //metodos:
         int definirLongitud();
@@ -58,6 +59,7 @@ class Paquete
 
         //Variables:
         std::string zona;
+        bool urgente;
 
         //----------Definicion de estructuras--------------------
         estructuraNIF NIF;
@@ -78,6 +80,7 @@ class Paquete
             Identificador.ID = modelarID();
             //------------------------Zona:
             zona = asignarZona();
+            urgente = paqueteUrgente();
 
         }
 };
@@ -103,21 +106,6 @@ public:
 };
 typedef Nodo *pNodo;
 
-/*
-    CLASE PILA
-*/
-class Pila
-{
-private:
-    pNodo cima;
-public:
-    int cantidadDePaquetes = 0;
-    Pila() : cima(NULL) {} //Constructor de la Pila
-    ~Pila();
-    void apilar(Paquete paquete);
-    Paquete desapilar();
-};
-
 
 /*
     CLASE COLAS
@@ -134,15 +122,37 @@ private:
 };
 
 /*
+    CLASE PILA
+*/
+class Pila
+{
+private:
+    pNodo cima;
+public:
+    int cantidadDePaquetes = 0;
+    Pila() : cima(NULL) {} //Constructor de la Pila
+    ~Pila();
+    void apilar(Paquete paquete);
+    Paquete desapilar();
+    void invertir();
+
+};
+
+/*
     CLASE MUELLE
 */
 class MuelleDeSalida{
     public:
         int paquetesEnMuelle = 0;
+        int cantidadUrgentes = 0;
         std::string zona;
         Pila arrayPila[9];
         MuelleDeSalida(std::string zonaMuelle){
             zona = zonaMuelle;
+            for(int i = 0; i <= 9; ++i){
+                Pila pila;
+                arrayPila[i] = pila;
+            }
 
         }
     };

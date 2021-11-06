@@ -27,6 +27,7 @@ int main()
     int furgonetasLlenasNE, furgonetasLlenasNO, furgonetasLlenasSE, furgonetasLlenasSO;
     Cola colaInicialPaquetes;
     Cola colaAux;
+    Pila pilaAux;
     utilidades utilidades;
     //Generar 100 paquetes y meterlos en una cola y llamada al menu principal y muestreo de los datos de los paquetes generados de forma aleatoria.
     utilidades.menu_principal();
@@ -38,21 +39,39 @@ int main()
         //encolar cola aux a cola inicial para concatenar resto de paquetes a urgentes
         //random de 1 al 9, si sale 2 u 8 urgente, si sale otro numero normal.
         //urgente true o false.
-        colaInicialPaquetes.encolar(paquete);
-        colaAux.encolar(paquete);
+        string urgencia;
         string longitud = paquete.Coordenadas.longitud;
         string latitud = paquete.Coordenadas.latitud;
         string NIF = paquete.NIF.NIFCompleto;
         string ID = paquete.Identificador.ID;
         string zona = paquete.zona;
-        cout << "|" << setw (11) << NIF << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (6) << "|" << setw(12) << ID
-        << setw (9) << "|" << setw(9) << zona << setw(6) << "|" << endl;
-        cout << "---------------------------------------------------------------------------------------------" << endl;
+        if(paquete.urgente){
+            colaInicialPaquetes.encolar(paquete);
+            urgencia = "SI";
+        }else{
+            colaAux.encolar(paquete);
+            urgencia = "NO";
+        }
+
+
+
+        cout << "|" << setw (11) << ID << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (5) << "|" << setw(15) << NIF
+        << setw (7) << "|" << setw(8) << zona << setw(7) << "|" << setw(7)<< urgencia << setw(7)<< "|" <<endl;
+        cout << "-----------------------------------------------------------------------------------------------------------" << endl;
+    }
+
+
+    //encolar No urgentes al final de la cola;
+    paqueteAux = colaAux.desencolar();
+    while(paqueteAux.NIF.NIFCompleto != ""){
+            colaInicialPaquetes.encolar(paqueteAux);
+            paqueteAux = colaAux.desencolar();
+
     }
 
     //Pasar de cola a pila
     while(contadorGlobal < 10){
-        cout << "Presiona enter para pasar 10 paquetes a las furgonetas" << endl;
+        //cout << "Presiona enter para pasar 10 paquetes a las furgonetas" << endl;
         //cin.ignore();
         for(int i = 0; i < N2; ++i){
             contadorNE = muelleDeSalidaNE.paquetesEnMuelle/5;
@@ -62,12 +81,18 @@ int main()
             paqueteAux = colaInicialPaquetes.desencolar();
             cout << "---------------------------------------------------------------------" << endl;
             if(paqueteAux.zona == "NE"){
+                if(paqueteAux.urgente){
+                    ++muelleDeSalidaNE.cantidadUrgentes;
+                }
                 muelleDeSalidaNE.arrayPila[contadorNE].apilar(paqueteAux);
                 muelleDeSalidaNE.arrayPila[contadorNE].cantidadDePaquetes++;
                 muelleDeSalidaNE.paquetesEnMuelle++;
                 cout << "Paquete entrando en zona NE: " << paqueteAux.Identificador.ID <<". Furgoneta: "<<contadorNE+1 << " Espacio libre: "<< 5-muelleDeSalidaNE.arrayPila[contadorNE].cantidadDePaquetes<<" | "<<endl;
 
             }else if(paqueteAux.zona == "NO"){
+                if(paqueteAux.urgente){
+                    ++muelleDeSalidaNO.cantidadUrgentes;
+                }
                 muelleDeSalidaNO.arrayPila[contadorNO].apilar(paqueteAux);
                 muelleDeSalidaNO.arrayPila[contadorNO].cantidadDePaquetes++;
                 muelleDeSalidaNO.paquetesEnMuelle++;
@@ -75,6 +100,9 @@ int main()
 
 
             }else if(paqueteAux.zona == "SE"){
+                if(paqueteAux.urgente){
+                    ++muelleDeSalidaSE.cantidadUrgentes;
+                }
                 muelleDeSalidaSE.arrayPila[contadorSE].apilar(paqueteAux);
                 muelleDeSalidaSE.arrayPila[contadorSE].cantidadDePaquetes++;
                 muelleDeSalidaSE.paquetesEnMuelle++;
@@ -82,6 +110,9 @@ int main()
 
 
             }else if(paqueteAux.zona == "SO"){
+                if(paqueteAux.urgente){
+                    ++muelleDeSalidaSO.cantidadUrgentes;
+                }
                 muelleDeSalidaSO.arrayPila[contadorSO].apilar(paqueteAux);
                 muelleDeSalidaSO.arrayPila[contadorSO].cantidadDePaquetes++;
                 muelleDeSalidaSO.paquetesEnMuelle++;
@@ -157,6 +188,14 @@ int main()
         }
     }
 
+    //Reorganizar furgonetas con paquetes urgentes y no urgentes
+    muelleDeSalidaNE.arrayPila[muelleDeSalidaNE.cantidadUrgentes/5].invertir();
+    muelleDeSalidaNO.arrayPila[muelleDeSalidaNO.cantidadUrgentes/5].invertir();
+    muelleDeSalidaSE.arrayPila[muelleDeSalidaSE.cantidadUrgentes/5].invertir();
+    muelleDeSalidaSO.arrayPila[muelleDeSalidaSO.cantidadUrgentes/5].invertir();
+
+
+
     Cola colaNE,colaNO,colaSE,colaSO;
     //Pilas a colas
     //Muelle NE
@@ -166,7 +205,7 @@ int main()
         int posicion = 9 - contadorGlobal;
         for(int i = 1; i <= 5; ++i){
             if(muelleDeSalidaNE.arrayPila[posicion].cantidadDePaquetes >= i && muelleDeSalidaNE.arrayPila[posicion].cantidadDePaquetes < 6){
-               colaNE.encolar(muelleDeSalidaNE.arrayPila[posicion].desapilar());
+                colaNE.encolar(muelleDeSalidaNE.arrayPila[posicion].desapilar());
 
             }
             if(muelleDeSalidaNO.arrayPila[posicion].cantidadDePaquetes >= i && muelleDeSalidaNO.arrayPila[posicion].cantidadDePaquetes < 6){
@@ -190,32 +229,36 @@ int main()
 
         paqueteAux = colaNE.desencolar();
         if(paqueteAux.NIF.NIFCompleto != ""){
+            string urgencia;
+            if(paqueteAux.urgente){urgencia = "SI";}else urgencia = "NO";
             string longitud = paqueteAux.Coordenadas.longitud;
             string latitud = paqueteAux.Coordenadas.latitud;
             string NIF = paqueteAux.NIF.NIFCompleto;
             string ID = paqueteAux.Identificador.ID;
             string zona = paqueteAux.zona;
-            cout << "|" << setw (11) << NIF << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (6) << "|" << setw(12) << ID
-            << setw (9) << "|" << setw(9) << zona << setw(6) << "|" << endl;
-            cout << "---------------------------------------------------------------------------------------------" << endl;
+            cout << "|" << setw (11) << ID << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (5) << "|" << setw(15) << NIF
+            << setw (7) << "|" << setw(8) << zona << setw(7) << "|" << setw(7)<< urgencia << setw(7)<< "|" <<endl;
+            cout << "-----------------------------------------------------------------------------------------------------------" << endl;
         }
 
     }while(paqueteAux.NIF.NIFCompleto != "");
-     cout << "---------------------------------------------------------------------------------------------" << endl;
+    cout << "---------------------------------------------------------------------------------------------" << endl;
     cout << "|" << setw(50) << "Zona Noroeste" << setw(42) << "|" << endl;
     cout << "---------------------------------------------------------------------------------------------" << endl;
     do{
 
         paqueteAux = colaNO.desencolar();
         if(paqueteAux.NIF.NIFCompleto != ""){
+            string urgencia;
+            if(paqueteAux.urgente){urgencia = "SI";}else urgencia = "NO";
             string longitud = paqueteAux.Coordenadas.longitud;
             string latitud = paqueteAux.Coordenadas.latitud;
             string NIF = paqueteAux.NIF.NIFCompleto;
             string ID = paqueteAux.Identificador.ID;
             string zona = paqueteAux.zona;
-            cout << "|" << setw (11) << NIF << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (6) << "|" << setw(12) << ID
-            << setw (9) << "|" << setw(9) << zona << setw(6) << "|" << endl;
-            cout << "---------------------------------------------------------------------------------------------" << endl;
+            cout << "|" << setw (11) << ID << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (5) << "|" << setw(15) << NIF
+            << setw (7) << "|" << setw(8) << zona << setw(7) << "|" << setw(7)<< urgencia << setw(7)<< "|" <<endl;
+            cout << "-----------------------------------------------------------------------------------------------------------" << endl;
         }
 
 
@@ -227,14 +270,16 @@ int main()
 
         paqueteAux = colaSE.desencolar();
         if(paqueteAux.NIF.NIFCompleto != ""){
+            string urgencia;
+            if(paqueteAux.urgente){urgencia = "SI";}else urgencia = "NO";
             string longitud = paqueteAux.Coordenadas.longitud;
             string latitud = paqueteAux.Coordenadas.latitud;
             string NIF = paqueteAux.NIF.NIFCompleto;
             string ID = paqueteAux.Identificador.ID;
             string zona = paqueteAux.zona;
-            cout << "|" << setw (11) << NIF << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (6) << "|" << setw(12) << ID
-            << setw (9) << "|" << setw(9) << zona << setw(6) << "|" << endl;
-            cout << "---------------------------------------------------------------------------------------------" << endl;
+            cout << "|" << setw (11) << ID << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (5) << "|" << setw(15) << NIF
+            << setw (7) << "|" << setw(8) << zona << setw(7) << "|" << setw(7)<< urgencia << setw(7)<< "|" <<endl;
+            cout << "-----------------------------------------------------------------------------------------------------------" << endl;
         }
     }while(paqueteAux.NIF.NIFCompleto != "");
     cout << "---------------------------------------------------------------------------------------------" << endl;
@@ -244,14 +289,16 @@ int main()
 
         paqueteAux = colaSE.desencolar();
         if(paqueteAux.NIF.NIFCompleto != ""){
+            string urgencia;
+            if(paqueteAux.urgente){urgencia = "SI";}else urgencia = "NO";
             string longitud = paqueteAux.Coordenadas.longitud;
             string latitud = paqueteAux.Coordenadas.latitud;
             string NIF = paqueteAux.NIF.NIFCompleto;
             string ID = paqueteAux.Identificador.ID;
             string zona = paqueteAux.zona;
-            cout << "|" << setw (11) << NIF << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (6) << "|" << setw(12) << ID
-            << setw (9) << "|" << setw(9) << zona << setw(6) << "|" << endl;
-            cout << "---------------------------------------------------------------------------------------------" << endl;
+            cout << "|" << setw (11) << ID << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (5) << "|" << setw(15) << NIF
+            << setw (7) << "|" << setw(8) << zona << setw(7) << "|" << setw(7)<< urgencia << setw(7)<< "|" <<endl;
+            cout << "-----------------------------------------------------------------------------------------------------------" << endl;
         }
 
     }while(paqueteAux.NIF.NIFCompleto != "");
@@ -259,14 +306,16 @@ int main()
 
         paqueteAux = colaSO.desencolar();
         if(paqueteAux.NIF.NIFCompleto != ""){
+            string urgencia;
+            if(paqueteAux.urgente){urgencia = "SI";}else urgencia = "NO";
             string longitud = paqueteAux.Coordenadas.longitud;
             string latitud = paqueteAux.Coordenadas.latitud;
             string NIF = paqueteAux.NIF.NIFCompleto;
             string ID = paqueteAux.Identificador.ID;
             string zona = paqueteAux.zona;
-            cout << "|" << setw (11) << NIF << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (6) << "|" << setw(12) << ID
-            << setw (9) << "|" << setw(9) << zona << setw(6) << "|" << endl;
-            cout << "---------------------------------------------------------------------------------------------" << endl;
+            cout << "|" << setw (11) << ID << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (5) << "|" << setw(15) << NIF
+            << setw (7) << "|" << setw(8) << zona << setw(7) << "|" << setw(7)<< urgencia << setw(7)<< "|" <<endl;
+            cout << "-----------------------------------------------------------------------------------------------------------" << endl;
         }
 
     }while(paqueteAux.NIF.NIFCompleto != "");
