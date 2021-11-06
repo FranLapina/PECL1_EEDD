@@ -183,8 +183,99 @@ int main()
         }
         --contadorGlobal;
     }
+    cout << "---------------------------------------------------------------------------------------------" << endl;
+    cout << "|" << setw(50) << "Zona Noreste" << setw(42) << "|" << endl;
+    cout << "---------------------------------------------------------------------------------------------" << endl;
+    do{
+
+        paqueteAux = colaNE.desencolar();
+        if(paqueteAux.NIF.NIFCompleto != ""){
+            string longitud = paqueteAux.Coordenadas.longitud;
+            string latitud = paqueteAux.Coordenadas.latitud;
+            string NIF = paqueteAux.NIF.NIFCompleto;
+            string ID = paqueteAux.Identificador.ID;
+            string zona = paqueteAux.zona;
+            cout << "|" << setw (11) << NIF << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (6) << "|" << setw(12) << ID
+            << setw (9) << "|" << setw(9) << zona << setw(6) << "|" << endl;
+            cout << "---------------------------------------------------------------------------------------------" << endl;
+        }
+
+    }while(paqueteAux.NIF.NIFCompleto != "");
+     cout << "---------------------------------------------------------------------------------------------" << endl;
+    cout << "|" << setw(50) << "Zona Noroeste" << setw(42) << "|" << endl;
+    cout << "---------------------------------------------------------------------------------------------" << endl;
+    do{
+
+        paqueteAux = colaNO.desencolar();
+        if(paqueteAux.NIF.NIFCompleto != ""){
+            string longitud = paqueteAux.Coordenadas.longitud;
+            string latitud = paqueteAux.Coordenadas.latitud;
+            string NIF = paqueteAux.NIF.NIFCompleto;
+            string ID = paqueteAux.Identificador.ID;
+            string zona = paqueteAux.zona;
+            cout << "|" << setw (11) << NIF << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (6) << "|" << setw(12) << ID
+            << setw (9) << "|" << setw(9) << zona << setw(6) << "|" << endl;
+            cout << "---------------------------------------------------------------------------------------------" << endl;
+        }
+
+
+    }while(paqueteAux.NIF.NIFCompleto != "");
+     cout << "---------------------------------------------------------------------------------------------" << endl;
+    cout << "|" << setw(50) << "Zona Sureste" << setw(42) << "|" << endl;
+    cout << "---------------------------------------------------------------------------------------------" << endl;
+    do{
+
+        paqueteAux = colaSE.desencolar();
+        if(paqueteAux.NIF.NIFCompleto != ""){
+            string longitud = paqueteAux.Coordenadas.longitud;
+            string latitud = paqueteAux.Coordenadas.latitud;
+            string NIF = paqueteAux.NIF.NIFCompleto;
+            string ID = paqueteAux.Identificador.ID;
+            string zona = paqueteAux.zona;
+            cout << "|" << setw (11) << NIF << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (6) << "|" << setw(12) << ID
+            << setw (9) << "|" << setw(9) << zona << setw(6) << "|" << endl;
+            cout << "---------------------------------------------------------------------------------------------" << endl;
+        }
+    }while(paqueteAux.NIF.NIFCompleto != "");
+    cout << "---------------------------------------------------------------------------------------------" << endl;
+    cout << "|" << setw(50) << "Zona Suroeste" << setw(42) << "|" << endl;
+    cout << "---------------------------------------------------------------------------------------------" << endl;
+    do{
+
+        paqueteAux = colaSE.desencolar();
+        if(paqueteAux.NIF.NIFCompleto != ""){
+            string longitud = paqueteAux.Coordenadas.longitud;
+            string latitud = paqueteAux.Coordenadas.latitud;
+            string NIF = paqueteAux.NIF.NIFCompleto;
+            string ID = paqueteAux.Identificador.ID;
+            string zona = paqueteAux.zona;
+            cout << "|" << setw (11) << NIF << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (6) << "|" << setw(12) << ID
+            << setw (9) << "|" << setw(9) << zona << setw(6) << "|" << endl;
+            cout << "---------------------------------------------------------------------------------------------" << endl;
+        }
+
+    }while(paqueteAux.NIF.NIFCompleto != "");
+    do{
+
+        paqueteAux = colaSO.desencolar();
+        if(paqueteAux.NIF.NIFCompleto != ""){
+            string longitud = paqueteAux.Coordenadas.longitud;
+            string latitud = paqueteAux.Coordenadas.latitud;
+            string NIF = paqueteAux.NIF.NIFCompleto;
+            string ID = paqueteAux.Identificador.ID;
+            string zona = paqueteAux.zona;
+            cout << "|" << setw (11) << NIF << setw (7) << "|" << setw(18) << longitud << " , " << latitud << setw (6) << "|" << setw(12) << ID
+            << setw (9) << "|" << setw(9) << zona << setw(6) << "|" << endl;
+            cout << "---------------------------------------------------------------------------------------------" << endl;
+        }
+
+    }while(paqueteAux.NIF.NIFCompleto != "");
+
+
+
 
     //TODO: MOSTRAR COLAS DE CADA ZONA POR PANTALLA Y PAQUETES URGENTES
+    //Mostrar colas de cada zona por pantalla
     //Paquetes urgentes:
 
         /*
