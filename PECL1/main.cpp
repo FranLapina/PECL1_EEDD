@@ -224,7 +224,7 @@ int main()
     }
     cout << "-----------------------------------------------------------------------------------------------------------" << endl;
     cout << "|" << setw(59) << "Zona Noreste" << setw(47) << "|" << endl;
-    utilidades.menu_principal();
+    utilidades.menu_enviados();
     do{
 
         paqueteAux = colaNE.desencolar();
@@ -244,7 +244,7 @@ int main()
     }while(paqueteAux.NIF.NIFCompleto != "");
     cout << "-----------------------------------------------------------------------------------------------------------" << endl;
     cout << "|" << setw(59) << "Zona Noroeste" << setw(47) << "|" << endl;
-    utilidades.menu_principal();
+    utilidades.menu_enviados();
     do{
 
         paqueteAux = colaNO.desencolar();
@@ -265,7 +265,7 @@ int main()
     }while(paqueteAux.NIF.NIFCompleto != "");
     cout << "-----------------------------------------------------------------------------------------------------------" << endl;
     cout << "|" << setw(59) << "Zona Sureste" << setw(47) << "|" << endl;
-    utilidades.menu_principal();
+    utilidades.menu_enviados();
     do{
 
         paqueteAux = colaSE.desencolar();
@@ -286,7 +286,7 @@ int main()
     }while(paqueteAux.NIF.NIFCompleto != "");
     cout << "-----------------------------------------------------------------------------------------------------------" << endl;
     cout << "|" << setw(59) << "Zona Suroeste" << setw(47) << "|" << endl;
-    utilidades.menu_principal();
+    utilidades.menu_enviados();
     do{
 
         paqueteAux = colaSO.desencolar();

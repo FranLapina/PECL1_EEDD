@@ -25,19 +25,20 @@
 	<utilidades.h>
 	<iomanip>
 
-1635502048 source:c:\users\luisi\desktop\pecl1_eedd\pecl1_eedd-main\pecl1\src\utilidades.cpp
+1636211913 source:c:\users\luisi\desktop\pecl1_eedd\pecl1_eedd-main\pecl1\src\utilidades.cpp
 	"utilidades.h"
 	<cstdlib>
 	<string>
 	<iostream>
 	<iomanip>
 
-1635500385 c:\users\luisi\desktop\pecl1_eedd\pecl1_eedd-main\pecl1\include\utilidades.h
+1636367581 c:\users\luisi\desktop\pecl1_eedd\pecl1_eedd-main\pecl1\include\utilidades.h
 	<cstddef>
 	<cstdlib>
 	<string>
 
-1635500385 source:c:\users\luisi\desktop\pecl1_eedd\pecl1_eedd-main\pecl1\main.cpp
+1636367542 source:c:\users\luisi\desktop\pecl1_eedd\pecl1_eedd-main\pecl1\main.cpp
 	<iostream>
 	<utilidades.h>
+	<iomanip>
 

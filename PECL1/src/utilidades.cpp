@@ -248,6 +248,15 @@ void utilidades::menu_principal(){
 }
 
 
+void utilidades::menu_enviados(){
+    cout << "-----------------------------------------------------------------------------------------------------------" << endl;
+    cout << "|" << setw (61) << "Paquetes Enviados" << setw (45) << "|" << endl;
+    cout << "-----------------------------------------------------------------------------------------------------------" << endl;
+    cout << "|" << setw (14) << "Identificador" << setw (4) << "|" << setw (23) << "Coordenadas" << setw (14) << "|" << setw (12) << "NIF" << setw (10) << "|" << setw(11) << "Zona de" << setw (4) << "|" << setw(10) << "Paquete" << setw(4)<<"|" <<endl;
+    cout << "|" << setw (11) << "Paquete" << setw (7) << "|" << setw (20) << "Envio" << setw (17) << "|" << setw(17) << "Destinatario"
+    << setw (5) << "|" << setw(10) << "Envio" << setw (5) << "|"<< setw(10) <<"urgente"<<setw(4)<< "|" <<endl;
+    cout << "-----------------------------------------------------------------------------------------------------------" << endl;
+}
 
 void utilidades::menu_carga(MuelleDeSalida muelleDeSalidaNE, MuelleDeSalida muelleDeSalidaNO,
                             MuelleDeSalida muelleDeSalidaSE, MuelleDeSalida muelleDeSalidaSO,
