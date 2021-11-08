@@ -164,9 +164,7 @@ class utilidades
         utilidades();
         virtual ~utilidades();
         void menu_principal();
-        void menu_carga(MuelleDeSalida muelleDeSalidaNE, MuelleDeSalida muelleDeSalidaNO, MuelleDeSalida muelleDeSalidaSE, MuelleDeSalida muelleDeSalidaSO, int contadorGlobal, int N2, Cola colaInicialPaquetes);
         void menu_envio();
-        void menu_entregados();
         void menu_enviados();
 
 
