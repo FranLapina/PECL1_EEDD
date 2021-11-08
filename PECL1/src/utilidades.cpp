@@ -60,20 +60,21 @@ void Pila::invertir(){
 //Destructor
 Cola::~Cola()
 {
+    
     while(desencolar().NIF.NIFCompleto != ""){
         desencolar();
     }
 }
-//Añadir elemento en la cola
+//AÃ±adir elemento en la cola
 void Cola::encolar(Paquete paquete)
 {
     pNodo nuevo;
     nuevo = new Nodo(paquete); // Se crea un nodo nuevo
-// Si cola no vacía, se añade el nuevo a continuación de ultimo
+// Si cola no vacÃ­a, se aÃ±ade el nuevo a continuaciÃ³n de ultimo
     if(final) final->siguiente = nuevo;
-//El último elemento de la cola es el nuevo nodo
+//El Ãºltimo elemento de la cola es el nuevo nodo
     final = nuevo;
-// Si frente es NULL, la cola está vacía y el nuevo nodo pasa a ser el primero
+// Si frente es NULL, la cola estÃ¡ vacÃ­a y el nuevo nodo pasa a ser el primero
     if(!frente) frente = nuevo;
 }
 
@@ -85,12 +86,12 @@ Paquete Cola::desencolar()
 // Nodo apunta al primer elemento de la pila
     nodo = frente;
     if(!nodo) return paquete;// Si no hay nodos en la pila se devuelve 0
-//Se asigna a frente la dirección del segundo nodo
+//Se asigna a frente la direcciÃ³n del segundo nodo
     frente = nodo->siguiente;
 //Se guarda el valor de retorno
     paquete = nodo->paquete;
     delete nodo; // Se borra el nodo
-// Si cola vacía, ultimo debe ser NULL también
+// Si cola vacÃ­a, ultimo debe ser NULL tambiÃ©n
     if(!frente) final = NULL;
     return paquete;
 }
@@ -112,8 +113,8 @@ int Paquete::definirLatitud(){
     int latitud = (lat_min + rand() % (lat_max+1 - lat_min));
     return latitud;
 }
-//Modela la longitud parseandola a string y colocando los numeros de la siguiente forma XXº XX' XX''
-//mediante un bucle que añade espacios y caracteres en posiciones determinadas.
+//Modela la longitud parseandola a string y colocando los numeros de la siguiente forma XXÂº XX' XX''
+//mediante un bucle que aÃ±ade espacios y caracteres en posiciones determinadas.
 std::string Paquete::modelarLongitud(int longitudNumerica){
     std::string longitud = std::to_string(longitudNumerica);
     for(int i = 0; i <= 11; ++i){
@@ -129,8 +130,8 @@ std::string Paquete::modelarLongitud(int longitudNumerica){
 
 
 }
-//Modela la latitud parseandola a string y colocando los numeros de la siguiente forma XXº XX' XX''
-//mediante un bucle que añade espacios y caracteres en posiciones determinadas.
+//Modela la latitud parseandola a string y colocando los numeros de la siguiente forma XXÂº XX' XX''
+//mediante un bucle que aÃ±ade espacios y caracteres en posiciones determinadas.
 std::string Paquete::modelarLatitud(int latitudNumerica){
     std::string latitud = std::to_string(latitudNumerica);
     for(int i = 0; i <= 11; ++i){
@@ -154,8 +155,8 @@ int Paquete::generarNumerosNIF(){
         numerosNIF = (minimo + rand() % (maximo+1 - minimo));
         return numerosNIF;
 }
-//parsea el numero a string y completa el NIF añadiendole la letra que le corresponderia para los numeros que tiene
-//Y si no llega a 9 digitos (letra incluida) añade 0s a la izquierda hasta completarlo.
+//parsea el numero a string y completa el NIF aÃ±adiendole la letra que le corresponderia para los numeros que tiene
+//Y si no llega a 9 digitos (letra incluida) aÃ±ade 0s a la izquierda hasta completarlo.
 std::string Paquete::NIFCompleto(int numerosNIF){
     char letras[] = {'T','R','W','A','G','M','Y',
             'F','P','D','X','B','N','J','Z','S',
@@ -164,7 +165,7 @@ std::string Paquete::NIFCompleto(int numerosNIF){
     int posicion = numerosNIF%23;
     NIFCompleto = std::to_string(numerosNIF);
     NIFCompleto = NIFCompleto+letras[posicion];
-    //Comprobar si el NIF tiene un tamaño de 9 caracteres, si no lo tiene se añaden 0s a la izquierda.
+    //Comprobar si el NIF tiene un tamaÃ±o de 9 caracteres, si no lo tiene se aÃ±aden 0s a la izquierda.
     if(NIFCompleto.length() < 9){
         int exceso = 9 - NIFCompleto.length();
         for(int i = 0; i < exceso; ++i){
@@ -178,7 +179,7 @@ std::string Paquete::NIFCompleto(int numerosNIF){
 
 //ID PAQUETE
 
-//Genera los números del ID con un random que va de 0 a 999999
+//Genera los nÃºmeros del ID con un random que va de 0 a 999999
 int Paquete::generarNumerosID(){
     int maximo = 999999;
     int minimo = 0;
