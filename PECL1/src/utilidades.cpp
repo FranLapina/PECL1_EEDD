@@ -161,7 +161,6 @@ std::string Paquete::NIFCompleto(int numerosNIF){
             'F','P','D','X','B','N','J','Z','S',
             'Q','V','H','L','C','K','E'};
     std::string NIFCompleto;
-    char letra;
     int posicion = numerosNIF%23;
     NIFCompleto = std::to_string(numerosNIF);
     NIFCompleto = NIFCompleto+letras[posicion];
