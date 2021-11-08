@@ -308,37 +308,6 @@ int main()
 
 
 
-    //TODO: MOSTRAR COLAS DE CADA ZONA POR PANTALLA Y PAQUETES URGENTES
-    //Mostrar colas de cada zona por pantalla
-    //Paquetes urgentes:
-
-        /*
-
-
-            Meter paquetes urgentes en una pila de urgentes, recorrer esa pila metiendolos en los muelles correspondientes los primeros.
-            USAR colaAux;
-
-
-
-        */
-
-    //Codigo que crea una pila y lo pasa a una cola.
-    /*Pila pila;
-    Cola cola;
-    int i = 0, k = 0;
-    int MAX = 10;
-    for (i=1;i<MAX;i++){
-        pila.apilar(10*i);
-        //cout << "Apilando: " << 10*i << " " << endl;
-    }
-    for (i = 1; i < MAX; i++){
-        k = pila.desapilar();
-        cola.encolar(k);
-        //cout << "Encolando: " << k << endl;
-    }*/
-
-
-
 
 
     return 0;
